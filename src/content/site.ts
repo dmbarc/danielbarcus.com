@@ -101,7 +101,8 @@ export const demos: Demo[] = [
       is not mine to show, so this is the same interface grammar on an invented airframe: bezel
       softkeys, page hierarchy, a scratchpad line, and annunciators driven by a small systems model.`,
     tags: ['React', 'State machines', 'Systems model'],
-    status: 'building',
+    status: 'live',
+    to: '/instruments/mfd',
   },
 ]
 
