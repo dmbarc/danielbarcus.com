@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* ============================================================
+   danielbarcus.com — "Instrument Panel"
+   A merge of directions A and C: glass-panel structure carrying
+   CRT amber and cyan. Every colour is taken from real test
+   equipment and avionics displays, not chosen for decoration.
+   ============================================================ */
+
+@theme {
+  /* --- Grounds, darkest to lightest --------------------- */
+  --color-screen: #0c0b07;   /* inside a CRT bezel */
+  --color-ground: #17150f;   /* the page itself */
+  --color-panel: #1b1811;    /* a raised instrument face */
+  --color-rail: #211e15;     /* nav bars, chrome */
+  --color-line: #3a3527;     /* panel seams */
+  --color-line-soft: #241f14;/* graticule ruling */
+
+  /* --- Ink ---------------------------------------------- */
+  --color-bright: #f4eedc;   /* headings */
+  --color-body: #b9ae92;     /* running text */
+  --color-muted: #7e7660;    /* labels, captions */
+
+  /* --- Signal ------------------------------------------- */
+  --color-amber: #ffb000;    /* CH1 — storage-scope phosphor */
+  --color-cyan: #4ea1c4;     /* CH2 */
+  --color-caution: #e8a33d;  /* avionics caution */
+  --color-status: #59c36a;   /* avionics status */
+
+  /* --- Type --------------------------------------------- */
+  --font-display: Archivo, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-ground);
+  color: var(--color-body);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  color: var(--color-bright);
+  text-wrap: balance;
+}
+
+/* Keyboard focus must stay visible on every control. */
+:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   Utilities used often enough to earn a name
+   ============================================================ */
+
+/* Uppercase instrument silkscreen: panel labels, softkeys, units. */
+@utility silkscreen {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* The faint horizontal scanline wash inside a display area. */
+@utility scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgb(78 161 196 / 0.045) 0 1px,
+    transparent 1px 3px
+  );
+}

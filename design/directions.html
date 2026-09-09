@@ -1,0 +1,388 @@
+<title>danielbarcus.com Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Titillium+Web:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap">
+<style>
+/* ============ CHROME (theme-aware) ============ */
+:root{
+  --ch-bg:#F2F3F1; --ch-panel:#FFFFFF; --ch-ink:#191D1B; --ch-mut:#5E6663;
+  --ch-line:#D2D7D4; --ch-accent:#2C5F7C; --ch-accent-ink:#FFFFFF;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ch-bg:#141716; --ch-panel:#1D2220; --ch-ink:#E9EDEB; --ch-mut:#98A19D;
+    --ch-line:#2E3532; --ch-accent:#6FB3D2; --ch-accent-ink:#0F1413;
+  }
+}
+:root[data-theme="dark"]{
+  --ch-bg:#141716; --ch-panel:#1D2220; --ch-ink:#E9EDEB; --ch-mut:#98A19D;
+  --ch-line:#2E3532; --ch-accent:#6FB3D2; --ch-accent-ink:#0F1413;
+}
+*{box-sizing:border-box}
+body{background:var(--ch-bg);color:var(--ch-ink);font-family:Archivo,system-ui,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 72px}
+.top{position:sticky;top:0;z-index:50;background:var(--ch-bg);border-bottom:1px solid var(--ch-line);padding:14px 0 12px;margin-bottom:26px}
+.top-in{max-width:1180px;margin:0 auto;padding:0 20px;display:flex;flex-wrap:wrap;gap:14px;align-items:baseline;justify-content:space-between}
+.top h1{font-size:15px;font-weight:600;margin:0;letter-spacing:.01em}
+.top p{margin:0;font-size:12.5px;color:var(--ch-mut);max-width:52ch}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{font:500 12px/1 Archivo,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:9px 13px;border:1px solid var(--ch-line);background:var(--ch-panel);color:var(--ch-mut);border-radius:2px;cursor:pointer}
+.tab:hover{color:var(--ch-ink)}
+.tab[aria-selected="true"]{background:var(--ch-accent);border-color:var(--ch-accent);color:var(--ch-accent-ink)}
+.tab:focus-visible{outline:2px solid var(--ch-accent);outline-offset:2px}
+.note{font-size:12.5px;color:var(--ch-mut);margin:0 0 14px;line-height:1.6;max-width:78ch}
+.note b{color:var(--ch-ink);font-weight:600}
+.frame{border:1px solid var(--ch-line);border-radius:3px;overflow:hidden}
+
+/* ============ A - INSTRUMENT ============ */
+.m-a{background:#17150F;color:#E4DDCB;font-family:Archivo,sans-serif;padding:0}
+.m-a .bar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  padding:12px 22px;background:#211E15;border-bottom:1px solid #3A3527}
+.m-a .brand{font:700 14px/1 Archivo,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#FFB000}
+.m-a nav{display:flex;gap:4px;flex-wrap:wrap}
+.m-a nav a{font:500 11px/1 "JetBrains Mono",monospace;letter-spacing:.1em;color:#9C947F;text-decoration:none;
+  padding:7px 11px;border:1px solid #3A3527;background:#191710}
+.m-a nav a:hover{color:#FFB000;border-color:#6B5F3C}
+.m-a nav a.on{color:#17150F;background:#FFB000;border-color:#FFB000}
+.m-a .screen{position:relative;margin:22px;border:2px solid #3A3527;background:#0C0B07;overflow:hidden}
+.m-a canvas{display:block;width:100%;height:300px}
+.m-a .overlay{position:absolute;inset:0;padding:30px 34px;display:flex;flex-direction:column;justify-content:center;pointer-events:none}
+.m-a .eyebrow{font:500 11px/1 "JetBrains Mono",monospace;letter-spacing:.22em;color:#4EA1C4;margin-bottom:14px}
+.m-a h2{font:700 clamp(30px,5.2vw,58px)/1.02 Archivo,sans-serif;margin:0 0 12px;letter-spacing:-.02em;
+  text-wrap:balance;color:#F4EEDC;max-width:15ch;text-shadow:0 0 22px rgba(0,0,0,.85)}
+.m-a .sub{font:400 15px/1.55 Archivo,sans-serif;color:#B9AE92;max-width:46ch;margin:0;text-shadow:0 0 14px rgba(0,0,0,.9)}
+.m-a .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:#3A3527;margin:0 22px 22px;border:1px solid #3A3527}
+.m-a .r{background:#1B1811;padding:13px 16px}
+.m-a .r .k{font:500 10px/1 "JetBrains Mono",monospace;letter-spacing:.18em;color:#7E7660;margin-bottom:7px}
+.m-a .r .v{font:700 16px/1.2 "JetBrains Mono",monospace;color:#FFB000;font-variant-numeric:tabular-nums}
+.m-a .r.alt .v{color:#4EA1C4}
+.m-a section{padding:8px 22px 30px}
+.m-a .shead{display:flex;align-items:baseline;gap:14px;margin-bottom:16px}
+.m-a .shead h3{font:600 13px/1 Archivo,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#E4DDCB;margin:0}
+.m-a .shead .rule{flex:1;height:1px;background:#3A3527}
+.m-a .shead .ct{font:400 11px/1 "JetBrains Mono",monospace;color:#7E7660}
+.m-a .caps{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.m-a .cap{background:#1B1811;border:1px solid #3A3527;border-left:3px solid #FFB000;padding:16px 17px;display:flex;flex-direction:column;gap:9px}
+.m-a .cap.c2{border-left-color:#4EA1C4}
+.m-a .cap h4{font:600 17px/1.25 Archivo,sans-serif;margin:0;color:#F4EEDC}
+.m-a .cap p{font:400 13.5px/1.6 Archivo,sans-serif;margin:0;color:#A79D85}
+.m-a .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:4px}
+.m-a .chip{font:400 10px/1 "JetBrains Mono",monospace;letter-spacing:.08em;color:#9C947F;border:1px solid #3A3527;padding:5px 7px}
+
+/* ============ B - DRAWING SHEET ============ */
+.m-b{background:#DFE3E4;color:#16211F;font-family:Barlow,sans-serif;padding:20px}
+.m-b .sheet{border:2px solid #16211F;background:#E8EBEB;padding:0;position:relative}
+.m-b .sheet::before{content:"";position:absolute;inset:7px;border:1px solid #A2ACAE;pointer-events:none}
+.m-b .inner{padding:34px 38px 0}
+.m-b .stamp{display:flex;gap:22px;flex-wrap:wrap;font:500 10.5px/1 "IBM Plex Mono",monospace;
+  letter-spacing:.12em;color:#5E6B6C;text-transform:uppercase;border-bottom:1px solid #A2ACAE;padding-bottom:11px;margin-bottom:26px}
+.m-b .stamp b{color:#16211F;font-weight:500}
+.m-b h2{font:600 clamp(34px,6vw,72px)/.94 "Barlow Condensed",sans-serif;margin:0 0 6px;
+  text-transform:uppercase;letter-spacing:.005em;text-wrap:balance;max-width:14ch}
+.m-b .role{font:500 clamp(15px,2vw,20px)/1.3 "Barlow Condensed",sans-serif;letter-spacing:.13em;
+  text-transform:uppercase;color:#2C5F7C;margin:0 0 18px}
+.m-b .lede{font:400 16px/1.65 Barlow,sans-serif;color:#2E3A39;max-width:62ch;margin:0 0 30px;
+  padding-left:16px;border-left:2px solid #2C5F7C}
+.m-b .details{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:0;border-top:1px solid #A2ACAE}
+.m-b .d{padding:20px 20px 24px;border-bottom:1px solid #A2ACAE;border-right:1px solid #A2ACAE}
+.m-b .d:last-child{border-right:none}
+.m-b .dnum{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+.m-b .dnum span{width:26px;height:26px;border:1px solid #16211F;border-radius:50%;display:grid;place-items:center;
+  font:500 11px/1 "IBM Plex Mono",monospace;color:#16211F}
+.m-b .dnum em{font:500 10px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#5E6B6C;font-style:normal}
+.m-b .d h4{font:600 19px/1.2 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.02em;margin:0 0 7px}
+.m-b .d p{font:400 13.5px/1.6 Barlow,sans-serif;color:#3B4746;margin:0 0 10px}
+.m-b .spec{font:400 10.5px/1.8 "IBM Plex Mono",monospace;color:#5E6B6C;letter-spacing:.03em}
+.m-b .revwrap{overflow-x:auto;border-bottom:1px solid #A2ACAE}
+.m-b .revs{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.m-b .revs caption{text-align:left;font:500 10.5px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;
+  text-transform:uppercase;color:#5E6B6C;padding:18px 20px 11px}
+.m-b .revs th{font:500 10px/1 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;
+  color:#5E6B6C;text-align:left;padding:7px 20px;border-bottom:1px solid #A2ACAE;font-weight:500;white-space:nowrap}
+.m-b .revs td{font:400 13.5px/1.45 Barlow,sans-serif;padding:11px 20px;border-bottom:1px solid #C6CDCE;white-space:nowrap}
+.m-b .revs tr:last-child td{border-bottom:none}
+.m-b .revs td.rv{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#2C5F7C}
+.m-b .title-block{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));border-top:2px solid #16211F}
+.m-b .tb{padding:11px 16px;border-right:1px solid #A2ACAE}
+.m-b .tb:last-child{border-right:none}
+.m-b .tb .k{font:500 9.5px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#5E6B6C;margin-bottom:6px}
+.m-b .tb .v{font:500 13px/1.2 "Barlow Condensed",sans-serif;letter-spacing:.05em;text-transform:uppercase}
+
+/* ============ C - GLASS PANEL ============ */
+.m-c{background:#0B0F12;padding:20px;font-family:"Titillium Web",sans-serif}
+.m-c .bezel{background:#1A2026;border:1px solid #2B353D;border-radius:5px;padding:12px;display:grid;
+  grid-template-columns:auto 1fr auto;gap:12px}
+.m-c .keys{display:flex;flex-direction:column;gap:9px;justify-content:center}
+.m-c .key{font:600 10px/1.5 "Roboto Mono",monospace;letter-spacing:.09em;color:#8899A0;background:#111820;
+  border:1px solid #33404A;border-radius:3px;padding:11px 9px;min-width:54px;text-align:center;cursor:pointer}
+.m-c .key:hover{color:#35C4D6;border-color:#35C4D6}
+.m-c .key.on{color:#0B0F12;background:#35C4D6;border-color:#35C4D6}
+.m-c .key:focus-visible{outline:2px solid #35C4D6;outline-offset:2px}
+.m-c .disp{background:#0F1A1F;border:1px solid #33404A;border-radius:2px;padding:0;overflow:hidden;
+  background-image:repeating-linear-gradient(0deg,rgba(53,196,214,.045) 0 1px,transparent 1px 3px)}
+.m-c .status{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:8px 16px;
+  border-bottom:1px solid #23313A;font:500 10px/1.6 "Roboto Mono",monospace;letter-spacing:.12em;color:#6E828C}
+.m-c .status .ok{color:#59C36A}
+.m-c .status .ok::before{content:"\25CF  ";animation:blip 3.2s ease-in-out infinite}
+@keyframes blip{0%,88%,100%{opacity:1}94%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.m-c .status .ok::before{animation:none}}
+.m-c .body{padding:30px 30px 26px}
+.m-c .cal{font:400 10px/1 "Roboto Mono",monospace;letter-spacing:.24em;color:#E8A33D;margin-bottom:16px}
+.m-c h2{font:700 clamp(28px,4.6vw,50px)/1.04 "Titillium Web",sans-serif;color:#DCE8EC;margin:0 0 10px;
+  letter-spacing:-.008em;text-wrap:balance;max-width:16ch}
+.m-c h2 em{font-style:normal;color:#35C4D6}
+.m-c .lede{font:300 16px/1.65 "Titillium Web",sans-serif;color:#93A6AE;max-width:58ch;margin:0 0 26px}
+.m-c .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:#23313A;
+  border:1px solid #23313A;margin-bottom:26px}
+.m-c .cell{background:#0F1A1F;padding:14px 16px}
+.m-c .cell .k{font:500 9.5px/1 "Roboto Mono",monospace;letter-spacing:.16em;color:#6E828C;margin-bottom:8px}
+.m-c .cell .v{font:600 15px/1.3 "Titillium Web",sans-serif;color:#DCE8EC}
+.m-c .cell .v.cy{color:#35C4D6}
+.m-c .lhead{font:600 10.5px/1 "Roboto Mono",monospace;letter-spacing:.2em;color:#6E828C;
+  padding-bottom:9px;border-bottom:1px solid #23313A;margin-bottom:2px}
+.m-c .row{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;
+  padding:14px 2px;border-bottom:1px solid #1A272E}
+.m-c .row .id{font:500 11px/1 "Roboto Mono",monospace;color:#E8A33D}
+.m-c .row .nm{font:600 16px/1.25 "Titillium Web",sans-serif;color:#DCE8EC}
+.m-c .row .ds{font:300 13px/1.5 "Titillium Web",sans-serif;color:#8095A0;margin-top:3px}
+.m-c .row .st{font:500 10px/1 "Roboto Mono",monospace;letter-spacing:.1em;padding:5px 9px;border:1px solid;white-space:nowrap}
+.m-c .st.live{color:#59C36A;border-color:#2E5E37}
+.m-c .st.dev{color:#E8A33D;border-color:#6B4C1C}
+.m-c .st.cls{color:#6E828C;border-color:#33404A}
+.m-c .annun{display:flex;gap:8px;flex-wrap:wrap;padding:11px 16px;border-top:1px solid #23313A}
+.m-c .an{font:500 10px/1 "Roboto Mono",monospace;letter-spacing:.1em;color:#8899A0;
+  border:1px solid #33404A;padding:6px 9px;border-radius:2px}
+</style>
+
+<div class="top">
+  <div class="top-in">
+    <div>
+      <h1>danielbarcus.com &mdash; three directions</h1>
+      <p>Each pulled from something you actually built. Pick one, or mix (say, B&rsquo;s structure with C&rsquo;s palette).</p>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-t="a">A &middot; Instrument</button>
+      <button class="tab" role="tab" aria-selected="false" data-t="b">B &middot; Drawing Sheet</button>
+      <button class="tab" role="tab" aria-selected="false" data-t="c">C &middot; Glass Panel</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="pane" data-p="a">
+  <p class="note"><b>A &middot; Instrument.</b> From the waveform generator and oscilloscope simulation you built from scratch.
+  CRT amber phosphor rather than the usual terminal green, with a cyan second channel &mdash; the real colour pair on storage scopes.
+  The trace is live, and would respond to the cursor on the built site.</p>
+  <div class="frame">
+  <div class="m-a">
+    <div class="bar">
+      <div class="brand">D. M. Barcus</div>
+      <nav>
+        <a href="#" class="on">Work</a><a href="#">Projects</a><a href="#">About</a><a href="#">Contact</a>
+      </nav>
+    </div>
+    <div class="screen">
+      <canvas id="scope" width="1200" height="300" aria-hidden="true"></canvas>
+      <div class="overlay">
+        <div class="eyebrow">CH1 &mdash; SOFTWARE ENGINEER II</div>
+        <h2>I build the machines that teach the machines.</h2>
+        <p class="sub">Five years of Unity and C#/.NET training simulations for military maintenance &mdash;
+        cockpit interfaces, electrical diagnostics, and instruments that behave like the real thing.</p>
+      </div>
+    </div>
+    <div class="readout">
+      <div class="r"><div class="k">EXPERIENCE</div><div class="v">5+ YRS</div></div>
+      <div class="r alt"><div class="k">PRIMARY STACK</div><div class="v">C# / .NET</div></div>
+      <div class="r"><div class="k">ENGINE</div><div class="v">UNITY</div></div>
+      <div class="r alt"><div class="k">CERTIFIED</div><div class="v">PSM I</div></div>
+    </div>
+    <section>
+      <div class="shead"><h3>Captures</h3><div class="rule"></div><div class="ct">03 OF 07</div></div>
+      <div class="caps">
+        <div class="cap">
+          <h4>CH-53K Cockpit Interfaces</h4>
+          <p>MFD and CDU displays rebuilt in Coherent UI inside Unity. The customer preferred them to the training software they already had.</p>
+          <div class="chips"><span class="chip">JAVASCRIPT</span><span class="chip">COHERENT UI</span><span class="chip">UNITY</span></div>
+        </div>
+        <div class="cap c2">
+          <h4>Waveform Generator &amp; Scope</h4>
+          <p>A fully functional signal generator and oscilloscope that replicated real-device behaviour in real time, driven from the underlying circuit math.</p>
+          <div class="chips"><span class="chip">C#</span><span class="chip">SIGNAL MATH</span><span class="chip">REAL-TIME</span></div>
+        </div>
+        <div class="cap">
+          <h4>Idle Explorers MMO</h4>
+          <p>A server-authoritative Unity MMO with an ASP.NET Core backend on Postgres &mdash; the rules live on the server, the client only asks.</p>
+          <div class="chips"><span class="chip">ASP.NET CORE</span><span class="chip">POSTGRES</span><span class="chip">WEBGL</span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  </div>
+</div>
+
+<div class="pane" data-p="b" hidden>
+  <p class="note"><b>B &middot; Drawing Sheet.</b> From the electrical diagrams, engineering drawings and repair manuals you read
+  to model system behaviour. The whole page is a drawing sheet: border, title block, numbered detail callouts, and a
+  revision table &mdash; which is genuinely how a career reads. The numbering means something here, so it earns its place.</p>
+  <div class="frame">
+  <div class="m-b">
+    <div class="sheet">
+      <div class="inner">
+        <div class="stamp">
+          <div>SHEET <b>01 / 04</b></div><div>REV <b>C</b></div>
+          <div>DRAWN BY <b>D. BARCUS</b></div><div>LOCATION <b>ROME, GA</b></div>
+        </div>
+        <h2>Daniel M. Barcus</h2>
+        <div class="role">Software Engineer &middot; C# / .NET / Unity</div>
+        <p class="lede">I spend my days turning documents that were never meant to be software &mdash; wiring diagrams,
+        repair manuals, engineering specs &mdash; into simulations that behave the way the hardware actually behaves.
+        Five years of it, mostly for people who then have to go fix the real aircraft.</p>
+      </div>
+      <div class="details">
+        <div class="d">
+          <div class="dnum"><span>1</span><em>Detail</em></div>
+          <h4>F-18 Diagnostics Trainer</h4>
+          <p>Helped lead a small team delivering 30+ electrical-diagnostics lessons for a mock F-18 trainer in under twelve months.</p>
+          <div class="spec">TEAM LEAD &middot; MENTORING<br>KANBAN &middot; AZURE DEVOPS</div>
+        </div>
+        <div class="d">
+          <div class="dnum"><span>2</span><em>Detail</em></div>
+          <h4>HDRP to URP Conversion</h4>
+          <p>Led conversion of legacy render-pipeline projects, substantially improving rendering performance and landing ahead of schedule.</p>
+          <div class="spec">UNITY &middot; RENDER PIPELINE<br>DELIVERED EARLY</div>
+        </div>
+        <div class="d">
+          <div class="dnum"><span>3</span><em>Detail</em></div>
+          <h4>Boomsweeper</h4>
+          <p>An idle minesweeper for Android where flags score nothing on purpose &mdash; the tension is the whole product.</p>
+          <div class="spec">UNITY &middot; ANDROID<br>SOLO PROJECT</div>
+        </div>
+      </div>
+      <div class="revwrap">
+        <table class="revs">
+          <caption>Revision history</caption>
+          <thead><tr><th>Rev</th><th>Organisation</th><th>Title</th><th>Dates</th></tr></thead>
+          <tbody>
+            <tr><td class="rv">C</td><td>Carley Corporation</td><td>Software Engineer II</td><td>Mar 2021 &ndash; Aug 2026</td></tr>
+            <tr><td class="rv">B</td><td>Publix Super Markets</td><td>Programmer, Application Support</td><td>Apr 2019 &ndash; Mar 2021</td></tr>
+            <tr><td class="rv">A</td><td>Publix Super Markets</td><td>Grocery Leadership</td><td>Aug 2014 &ndash; Apr 2019</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="title-block">
+        <div class="tb"><div class="k">Degree</div><div class="v">B.S. Computer Science</div></div>
+        <div class="tb"><div class="k">Institution</div><div class="v">Univ. of North Georgia</div></div>
+        <div class="tb"><div class="k">Certification</div><div class="v">Scrum Master PSM I</div></div>
+        <div class="tb"><div class="k">Contact</div><div class="v">danielbarcus.com</div></div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class="pane" data-p="c" hidden>
+  <p class="note"><b>C &middot; Glass Panel.</b> From the CH-53K MFD you rebuilt. Navigation is bezel softkeys down the sides,
+  the way a real multi-function display works &mdash; so the structure of the site <i>is</i> a reference to your work.
+  Cyan and caution amber is the authentic avionics pair.</p>
+  <div class="frame">
+  <div class="m-c">
+    <div class="bezel">
+      <div class="keys">
+        <button class="key on">L1<br>HOME</button><button class="key">L2<br>WORK</button>
+        <button class="key">L3<br>PROJ</button><button class="key">L4<br>ABT</button>
+      </div>
+      <div class="disp">
+        <div class="status">
+          <span>PAGE 1/4 &middot; HOME</span><span class="ok">AVAILABLE FOR WORK</span><span>ROME GA</span>
+        </div>
+        <div class="body">
+          <div class="cal">SOFTWARE ENGINEER II &middot; SIMULATION &amp; FULL-STACK</div>
+          <h2>Daniel Barcus builds <em>training systems</em> that behave like the real hardware.</h2>
+          <p class="lede">Unity and C#/.NET, five years of it &mdash; cockpit interfaces, electrical diagnostics,
+          and instrumentation modelled straight from the engineering drawings. Before that, keeping five
+          enterprise systems alive on overnight call at Publix.</p>
+          <div class="grid">
+            <div class="cell"><div class="k">EXPERIENCE</div><div class="v">5+ years</div></div>
+            <div class="cell"><div class="k">CORE</div><div class="v cy">C# &middot; .NET &middot; Unity</div></div>
+            <div class="cell"><div class="k">ALSO</div><div class="v">JS &middot; SQL &middot; PowerShell</div></div>
+            <div class="cell"><div class="k">AGILE</div><div class="v">PSM I certified</div></div>
+          </div>
+          <div class="lhead">SELECTED PROJECTS</div>
+          <div class="row">
+            <div class="id">01</div>
+            <div><div class="nm">Idle Explorers MMO</div><div class="ds">Server-authoritative Unity MMO &middot; ASP.NET Core &middot; Postgres</div></div>
+            <div class="st dev">IN DEV</div>
+          </div>
+          <div class="row">
+            <div class="id">02</div>
+            <div><div class="nm">Boomsweeper</div><div class="ds">Idle minesweeper for Android where flags score nothing</div></div>
+            <div class="st live">SHIPPED</div>
+          </div>
+          <div class="row">
+            <div class="id">03</div>
+            <div><div class="nm">CH-53K MFD &amp; CDU</div><div class="ds">Coherent UI cockpit interfaces embedded in Unity</div></div>
+            <div class="st cls">CLIENT WORK</div>
+          </div>
+        </div>
+        <div class="annun">
+          <span class="an">C#</span><span class="an">.NET</span><span class="an">UNITY</span><span class="an">JAVASCRIPT</span>
+          <span class="an">SQL</span><span class="an">POWERSHELL</span><span class="an">AZURE DEVOPS</span><span class="an">GIT</span>
+        </div>
+      </div>
+      <div class="keys">
+        <button class="key">R1<br>CV</button><button class="key">R2<br>CODE</button>
+        <button class="key">R3<br>MAIL</button><button class="key">R4<br>LNKD</button>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll(".tab"));
+  var panes=[].slice.call(document.querySelectorAll(".pane"));
+  tabs.forEach(function(t){
+    t.addEventListener("click",function(){
+      tabs.forEach(function(x){x.setAttribute("aria-selected", x===t ? "true" : "false");});
+      panes.forEach(function(p){p.hidden = p.dataset.p !== t.dataset.t;});
+      window.scrollTo({top:0,behavior:"smooth"});
+    });
+  });
+
+  var c=document.getElementById("scope"); if(!c) return;
+  var g=c.getContext("2d"), W=c.width, H=c.height;
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function grid(){
+    g.strokeStyle="#241F14"; g.lineWidth=1;
+    var x,y;
+    for(x=0;x<=W;x+=W/12){g.beginPath();g.moveTo(x+0.5,0);g.lineTo(x+0.5,H);g.stroke();}
+    for(y=0;y<=H;y+=H/6){g.beginPath();g.moveTo(0,y+0.5);g.lineTo(W,y+0.5);g.stroke();}
+    g.strokeStyle="#3A3527";
+    g.beginPath();g.moveTo(0,H/2+0.5);g.lineTo(W,H/2+0.5);g.stroke();
+    g.beginPath();g.moveTo(W/2+0.5,0);g.lineTo(W/2+0.5,H);g.stroke();
+  }
+  function trace(t,amp,freq,phase,col,glow){
+    g.strokeStyle=col; g.lineWidth=2; g.shadowColor=col; g.shadowBlur=glow;
+    g.beginPath();
+    for(var x=0;x<=W;x+=2){
+      var u=x/W*Math.PI*2*freq+t*phase;
+      var y=H/2 - Math.sin(u)*amp - Math.sin(u*3.1)*amp*0.18;
+      if(x===0){g.moveTo(x,y);}else{g.lineTo(x,y);}
+    }
+    g.stroke(); g.shadowBlur=0;
+  }
+  var t0=0;
+  function frame(){
+    g.fillStyle="#0C0B07"; g.fillRect(0,0,W,H);
+    grid();
+    trace(t0,72,2,1.0,"#FFB000",14);
+    trace(t0,34,3.5,-1.6,"#4EA1C4",9);
+    if(!reduce){ t0+=0.012; requestAnimationFrame(frame); }
+  }
+  frame();
+})();
+</script>

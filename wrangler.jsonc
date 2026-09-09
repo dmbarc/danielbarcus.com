@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "danielbarcus-com",
+  "compatibility_date": "2026-09-09",
+  "assets": {
+    // Vite's build output. `single-page-application` makes client-side
+    // routes like /work/oscilloscope serve index.html instead of 404ing.
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
