@@ -18,7 +18,7 @@ export const profile = {
 
 export const hero = {
   eyebrow: 'CH1 — SOFTWARE ENGINEER II',
-  headline: 'I build the machines that teach the machines.',
+  headline: 'I develop highly-interactive software and experiences.',
   lede: `Five years of Unity and C#/.NET training simulations for military maintenance — cockpit
     interfaces, electrical diagnostics, and instruments modelled straight from the engineering
     drawings, for the people who then go fix the real aircraft.`,
@@ -117,6 +117,9 @@ export type Project = {
   statusTone: 'live' | 'caution' | 'idle'
   href?: string
   hrefLabel?: string
+  /** Route to a detail page on this site, when there is one. */
+  to?: string
+  toLabel?: string
 }
 
 export const projects: Project[] = [
@@ -142,7 +145,10 @@ export const projects: Project[] = [
     detail: `Flagging a mine earns you exactly zero. The only way to score is to keep clicking cells
       you are not certain about, which turns the safest move in minesweeper into the least rewarding
       one. Currently in development toward a store release.`,
-    tags: ['Unity', 'C#', 'Android'],
+    tags: ['Unity', 'C#', 'Android', 'WebGL'],
+    // Flipped to 'Playable here' with a `to` link once the WebGL demo is
+    // actually deployed. Advertising a playable build before one exists is
+    // the one claim on this site a visitor can disprove in a single click.
     status: 'In development',
     statusTone: 'caution',
   },

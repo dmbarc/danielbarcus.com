@@ -152,16 +152,23 @@ export function Home() {
                     </span>
                   ))}
                 </div>
-                {p.href && (
-                  <a
-                    className="silkscreen text-cyan hover:text-amber"
-                    href={p.href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {p.hrefLabel} →
-                  </a>
-                )}
+                <div className="flex flex-wrap gap-x-5 gap-y-2">
+                  {p.to && (
+                    <Link className="silkscreen text-amber hover:text-bright" to={p.to}>
+                      {p.toLabel} →
+                    </Link>
+                  )}
+                  {p.href && (
+                    <a
+                      className="silkscreen text-cyan hover:text-amber"
+                      href={p.href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {p.hrefLabel} →
+                    </a>
+                  )}
+                </div>
               </article>
             ))}
           </div>

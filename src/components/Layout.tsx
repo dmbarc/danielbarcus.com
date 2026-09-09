@@ -1,18 +1,28 @@
 import { useEffect, useState } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Link, Outlet, useLocation } from 'react-router-dom'
 
 import { profile } from '../content/site'
 
 /**
- * Softkeys address sections of the current page, not routes, so these are
+ * Softkeys address sections of the home page, not routes, so these are
  * plain anchors. Routing them through NavLink marks every one active,
  * because `/#work` resolves to the pathname `/`.
+ *
+ * They are also only shown on the home page. On a detail page there is no
+ * `#instruments` section to scroll to, so every one of them was a control
+ * that looked live and did nothing — worse than no control at all.
  */
 const nav = [
   { key: 'L1', label: 'Home', hash: '' },
   { key: 'L2', label: 'Instruments', hash: '#instruments' },
   { key: 'L3', label: 'Work', hash: '#work' },
   { key: 'L4', label: 'About', hash: '#about' },
+]
+
+/** What a detail route is called, for the bezel's back key. */
+const SECTION_OF: { prefix: string; label: string; backTo: string }[] = [
+  { prefix: '/instruments/', label: 'Instrument', backTo: '/#instruments' },
+  { prefix: '/projects/', label: 'Project', backTo: '/#work' },
 ]
 
 function useCurrentHash() {
@@ -33,6 +43,9 @@ function useCurrentHash() {
  */
 export function Layout() {
   const hash = useCurrentHash()
+  const { pathname } = useLocation()
+  const section = SECTION_OF.find((s) => pathname.startsWith(s.prefix))
+  const onHome = !section
 
   return (
     <div className="min-h-screen bg-ground">
@@ -60,26 +73,44 @@ export function Layout() {
           <span className="hidden sm:inline">{profile.location}</span>
         </div>
 
-        <nav aria-label="Primary" className="flex gap-1 overflow-x-auto px-4 py-2 sm:px-6">
-          {nav.map((item) => {
-            const active = hash === item.hash
-            return (
-              <a
-                key={item.key}
-                href={item.hash || '#main'}
-                aria-current={active ? 'true' : undefined}
-                className={[
-                  'shrink-0 border px-3 py-2 text-center silkscreen transition-colors',
-                  active
-                    ? 'border-amber bg-amber text-screen'
-                    : 'border-line bg-screen/60 text-muted hover:border-amber/60 hover:text-amber',
-                ].join(' ')}
+        <nav
+          aria-label="Primary"
+          className="flex items-center gap-1 overflow-x-auto px-4 py-2 sm:px-6"
+        >
+          {onHome ? (
+            nav.map((item) => {
+              const active = hash === item.hash
+              return (
+                <a
+                  key={item.key}
+                  href={item.hash || '#main'}
+                  aria-current={active ? 'true' : undefined}
+                  className={[
+                    'shrink-0 border px-3 py-2 text-center silkscreen transition-colors',
+                    active
+                      ? 'border-amber bg-amber text-screen'
+                      : 'border-line bg-screen/60 text-muted hover:border-amber/60 hover:text-amber',
+                  ].join(' ')}
+                >
+                  <span className="mr-1.5 opacity-60">{item.key}</span>
+                  {item.label}
+                </a>
+              )
+            })
+          ) : (
+            /* One live control instead of four dead ones. */
+            <>
+              <Link
+                to={section.backTo}
+                className="shrink-0 border border-amber bg-amber px-3 py-2 silkscreen
+                           text-screen transition-colors hover:bg-transparent hover:text-amber"
               >
-                <span className="mr-1.5 opacity-60">{item.key}</span>
-                {item.label}
-              </a>
-            )
-          })}
+                <span className="mr-1.5 opacity-60">L1</span>
+                Back
+              </Link>
+              <span className="silkscreen ml-2 truncate text-muted">{section.label} view</span>
+            </>
+          )}
         </nav>
       </header>
 

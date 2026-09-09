@@ -8,14 +8,20 @@
     "directory": "./dist",
     "not_found_handling": "single-page-application"
   },
-  // Attaching the apex and www as custom domains, rather than routes.
-  // A custom domain makes Cloudflare manage the DNS record for the
-  // Worker itself, which is what replaces the stale records currently
-  // answering 522. Routes would instead need a record already pointing
-  // somewhere valid.
+  // Routes, not custom domains.
+  //
+  // A custom domain asks Cloudflare to manage the hostname's DNS record
+  // itself, and it refuses while externally managed A records exist —
+  // which they do here, alongside MX records carrying live email
+  // forwarding that must not be disturbed.
+  //
+  // A route needs no DNS change at all. Both hostnames already resolve
+  // to proxied Cloudflare addresses, and a route intercepts the request
+  // at the edge before the origin is ever contacted. That is what
+  // replaces the 522: the dead origin simply stops being consulted.
   "routes": [
-    { "pattern": "danielbarcus.com", "custom_domain": true },
-    { "pattern": "www.danielbarcus.com", "custom_domain": true }
+    { "pattern": "danielbarcus.com/*", "zone_name": "danielbarcus.com" },
+    { "pattern": "www.danielbarcus.com/*", "zone_name": "danielbarcus.com" }
   ],
   "observability": {
     "enabled": true
