@@ -8,6 +8,15 @@
     "directory": "./dist",
     "not_found_handling": "single-page-application"
   },
+  // Attaching the apex and www as custom domains, rather than routes.
+  // A custom domain makes Cloudflare manage the DNS record for the
+  // Worker itself, which is what replaces the stale records currently
+  // answering 522. Routes would instead need a record already pointing
+  // somewhere valid.
+  "routes": [
+    { "pattern": "danielbarcus.com", "custom_domain": true },
+    { "pattern": "www.danielbarcus.com", "custom_domain": true }
+  ],
   "observability": {
     "enabled": true
   }
