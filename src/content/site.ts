@@ -88,7 +88,8 @@ export const demos: Demo[] = [
       at random, and you isolate it by probing test points with a meter. The circuit is solved from
       its actual topology, so every reading you take is consistent with every other one.`,
     tags: ['TypeScript', 'Circuit solver', 'SVG'],
-    status: 'building',
+    status: 'live',
+    to: '/instruments/fault-isolation',
   },
   {
     id: 'mfd',

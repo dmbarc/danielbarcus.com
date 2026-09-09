@@ -193,6 +193,9 @@ export function vrms(channel: Channel): number {
 /* ------------------------------------------------------------------ */
 
 export function formatVolts(v: number): string {
+  // Collapse signed zero, so a control parked at centre reads "0 µV"
+  // rather than "-0 µV".
+  if (Math.abs(v) < 1e-9) return '0 µV'
   const a = Math.abs(v)
   if (a < 1e-3) return `${(v * 1e6).toFixed(0)} µV`
   if (a < 1) return `${(v * 1e3).toFixed(a < 0.1 ? 1 : 0)} mV`

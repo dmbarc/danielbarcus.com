@@ -9,7 +9,8 @@
     "lint": "oxlint",
     "preview": "npm run build && wrangler dev",
     "deploy": "npm run build && wrangler deploy",
-    "check": "tsx scripts/signal.check.ts"
+    "check": "tsx scripts/signal.check.ts && tsx scripts/circuit.check.ts",
+    "check:circuit": "tsx scripts/circuit.check.ts"
   },
   "dependencies": {
     "react": "^19.2.8",
