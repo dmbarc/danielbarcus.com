@@ -28,8 +28,12 @@ export function ProjectBoomsweeper() {
         <GameEmbed
           src="/boomsweeper/index.html"
           title="BOOMSWEEPER"
-          downloadHint="First load is a large download"
+          downloadHint="About 13 MB on first load, cached after that"
         />
+
+        <p className="mt-3 silkscreen text-muted">
+          Demo — five boards. The full game is coming to Android.
+        </p>
 
         <div className="mt-8 grid gap-px bg-line sm:grid-cols-2">
           <article className="bg-panel p-5">

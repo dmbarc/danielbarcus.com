@@ -146,11 +146,10 @@ export const projects: Project[] = [
       you are not certain about, which turns the safest move in minesweeper into the least rewarding
       one. Currently in development toward a store release.`,
     tags: ['Unity', 'C#', 'Android', 'WebGL'],
-    // Flipped to 'Playable here' with a `to` link once the WebGL demo is
-    // actually deployed. Advertising a playable build before one exists is
-    // the one claim on this site a visitor can disprove in a single click.
-    status: 'In development',
-    statusTone: 'caution',
+    status: 'Demo playable here',
+    statusTone: 'live',
+    to: '/projects/boomsweeper',
+    toLabel: 'Play the demo',
   },
 ]
 
