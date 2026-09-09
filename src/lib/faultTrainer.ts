@@ -5,7 +5,7 @@
  * present differently on a meter.
  *
  * 28 V DC is the standard aircraft bus voltage, so the readings a learner
- * sees here are the readings they would see on the aeroplane.
+ * sees here are the readings they would see on the airplane.
  */
 
 import { type Element, type Netlist, OPEN_OHMS, resistanceBetween, solve } from './circuit'
@@ -123,7 +123,7 @@ export function buildCircuit(fault: FaultId, switchClosed: boolean): Netlist {
   ]
 
   // A shorted lamp is a filament that has been BYPASSED, not one that
-  // turned into a wire. Modelling it as a parallel short keeps the
+  // turned into a wire. Modeling it as a parallel short keeps the
   // filament at its own resistance carrying almost nothing, which is
   // why the lamp goes dark while the branch current climbs.
   if (fault === 'lamp-shorted') {

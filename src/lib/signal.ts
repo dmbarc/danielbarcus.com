@@ -47,7 +47,7 @@ export const H_DIVS = 10
 export const V_DIVS = 8
 
 /**
- * One cycle of a waveform, normalised to -1..1, over phase p in [0,1).
+ * One cycle of a waveform, normalized to -1..1, over phase p in [0,1).
  * `noise` ignores phase — it is noise.
  */
 export function shape(waveform: Waveform, p: number): number {
@@ -101,7 +101,7 @@ export function triggerPhase(
   if (coupling === 'gnd' || source.waveform === 'noise') return null
   if (source.amplitude === 0) return null
 
-  // Normalise the level into the shape's own -1..1 space.
+  // Normalize the level into the shape's own -1..1 space.
   const dc = coupling === 'ac' ? 0 : source.offset
   const n = (level - dc) / source.amplitude
   if (n < -1 || n > 1) return null
@@ -134,7 +134,7 @@ function norm(p: number): number {
 
 /**
  * The time to place at the left edge of the display so that the trigger
- * point lands at horizontal centre, matching a real scope's default.
+ * point lands at horizontal center, matching a real scope's default.
  * Returns null when the channel will not trigger.
  */
 export function triggerStartTime(
@@ -193,7 +193,7 @@ export function vrms(channel: Channel): number {
 /* ------------------------------------------------------------------ */
 
 export function formatVolts(v: number): string {
-  // Collapse signed zero, so a control parked at centre reads "0 µV"
+  // Collapse signed zero, so a control parked at center reads "0 µV"
   // rather than "-0 µV".
   if (Math.abs(v) < 1e-9) return '0 µV'
   const a = Math.abs(v)

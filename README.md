@@ -8,10 +8,10 @@ Cloudflare Worker serving static assets.
 One visual direction — "Instrument Panel" — merging an oscilloscope's CRT
 palette with a glass-cockpit panel's structure. Both come from real work: a
 waveform generator and scope built at Carley, and CH-53K MFD/CDU interfaces.
-Colours and type live as tokens in `src/index.css` under `@theme`.
+Colors and type live as tokens in `src/index.css` under `@theme`.
 
 The site is deliberately single-theme. An instrument panel is dark; a light
-mode would be a different object, not the same one recoloured.
+mode would be a different object, not the same one recolored.
 
 ## Content
 

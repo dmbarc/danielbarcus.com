@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { Oscilloscope } from '../components/instruments/Oscilloscope'
+import { Disclosure } from '../components/Disclosure'
 import { demos } from '../content/site'
 
 const demo = demos.find((d) => d.id === 'oscilloscope')!
@@ -20,6 +21,8 @@ export function InstrumentOscilloscope() {
           </h1>
           <p className="max-w-[65ch] text-[0.95rem] leading-relaxed text-body">{demo.detail}</p>
         </header>
+
+        <Disclosure compact />
 
         <Oscilloscope />
 
@@ -50,7 +53,7 @@ export function InstrumentOscilloscope() {
             <h2 className="mb-3 text-base font-semibold">Where it comes from</h2>
             <p className="mb-3 text-[0.8125rem] leading-relaxed text-body">
               At Carley I built a waveform generator and oscilloscope in C# for a Unity maintenance
-              trainer. It had to replicate real device behaviour closely enough that a technician
+              trainer. It had to replicate real device behavior closely enough that a technician
               who learned on it would not be surprised by the bench equipment.
             </p>
             <p className="text-[0.8125rem] leading-relaxed text-body">

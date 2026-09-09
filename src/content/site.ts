@@ -20,7 +20,7 @@ export const hero = {
   eyebrow: 'CH1 — SOFTWARE ENGINEER II',
   headline: 'I develop highly-interactive software and experiences.',
   lede: `Five years of Unity and C#/.NET training simulations for military maintenance — cockpit
-    interfaces, electrical diagnostics, and instruments modelled straight from the engineering
+    interfaces, electrical diagnostics, and instruments modeled straight from the engineering
     drawings, for the people who then go fix the real aircraft.`,
   // The invitation matters more than the claim: the instruments below are
   // running code, not screenshots.
@@ -51,6 +51,26 @@ export const about = {
   ],
 }
 
+/**
+ * How the instrument demos were made.
+ *
+ * Shown at the top of the Instruments section and again on every
+ * instrument page, because a disclosure a visitor has to go looking for
+ * is not a disclosure.
+ */
+export const disclosure = {
+  heading: 'How these were built',
+  short: 'AI-generated demos — built by me with Claude Code',
+  body: `I built these three demos with Claude Code, using generative AI to write the
+    implementations. What I brought is the subject matter: the oscilloscope, the electrical
+    diagnostics, and the cockpit display are all things I worked on at Carley, and I specified
+    each demo, chose what was worth showing, and checked that the behavior matches the real
+    equipment. What I did not do is hand-write the code.`,
+  why: `I am telling you this up front because you would want to know, and because directing an
+    AI to build working software is itself part of how I work now. The projects below —
+    Boomsweeper and Idle Explorers — are my own code.`,
+}
+
 /** Live, interactive demos built for this site. */
 export type Demo = {
   id: string
@@ -71,7 +91,7 @@ export const demos: Demo[] = [
     name: 'Oscilloscope & Function Generator',
     blurb: 'A working two-channel scope. Real controls, real signal math.',
     detail: `At Carley I built a waveform generator and oscilloscope that replicated real-device
-      behaviour in real time. This is that instrument, rebuilt for the browser: volts and time per
+      behavior in real time. This is that instrument, rebuilt for the browser: volts and time per
       division, trigger level and slope, AC/DC coupling, and a generator feeding it. Nothing is
       pre-rendered — the trace is computed per frame from the signal parameters.`,
     tags: ['TypeScript', 'Canvas', 'Signal math'],
@@ -175,9 +195,9 @@ export const experience: Role[] = [
        CSS) embedded in Unity; delivered interfaces the customer praised over their existing training
        software.`,
       `Built a fully functional waveform generator and oscilloscope simulation that replicated real
-       device behaviour in real time.`,
+       device behavior in real time.`,
       `Interpreted electrical diagrams, engineering drawings and repair manuals to model accurate
-       system and gauge behaviour, performing the underlying simulation calculations.`,
+       system and gauge behavior, performing the underlying simulation calculations.`,
       `Led conversion of legacy HDRP projects to URP, substantially improving rendering performance
        and finishing ahead of schedule.`,
       `Helped lead a small team delivering 30+ electrical-diagnostics lessons for a mock F-18 trainer
@@ -207,7 +227,7 @@ export const experience: Role[] = [
     dates: 'Aug 2014 – Apr 2019',
     bullets: [
       `Led grocery department teams — priority planning, training and mentoring associates — and
-       analysed inventory, pricing and sales-trend data to drive replenishment and reduce waste.`,
+       analyzed inventory, pricing and sales-trend data to drive replenishment and reduce waste.`,
     ],
   },
 ]

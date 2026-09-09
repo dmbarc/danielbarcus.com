@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 
+import { Disclosure } from '../components/Disclosure'
 import { ScopeTrace } from '../components/ScopeTrace'
 import {
   about,
@@ -84,7 +85,8 @@ export function Home() {
       <section className="px-4 py-14 sm:px-6" aria-labelledby="instruments">
         <div className="mx-auto max-w-5xl">
           <SectionHead id="instruments" title="Instruments" count={`${demos.length} builds`} />
-          <p className="mb-8 max-w-[65ch] text-[0.95rem] leading-relaxed text-body">{hero.cta}</p>
+          <p className="mb-6 max-w-[65ch] text-[0.95rem] leading-relaxed text-body">{hero.cta}</p>
+          <Disclosure />
 
           <div className="grid gap-px bg-line sm:grid-cols-3">
             {demos.map((d) => (

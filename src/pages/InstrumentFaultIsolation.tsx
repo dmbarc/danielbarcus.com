@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { FaultIsolation } from '../components/instruments/FaultIsolation'
+import { Disclosure } from '../components/Disclosure'
 import { demos } from '../content/site'
 
 const demo = demos.find((d) => d.id === 'fault-isolation')!
@@ -20,6 +21,8 @@ export function InstrumentFaultIsolation() {
           </h1>
           <p className="max-w-[65ch] text-[0.95rem] leading-relaxed text-body">{demo.detail}</p>
         </header>
+
+        <Disclosure compact />
 
         <FaultIsolation />
 

@@ -27,7 +27,7 @@ const FAULT_KEYS: { id: SystemFault; key: string; label: string }[] = [
   { id: 'fuel-leak-left', key: 'R4', label: 'LEAK' },
 ]
 
-/** A labelled value in the display's own grid. */
+/** A labeled value in the display's own grid. */
 function Field({
   label,
   value,
@@ -39,7 +39,7 @@ function Field({
   unit?: string
   tone?: 'normal' | 'caution' | 'warning' | 'off'
 }) {
-  const colour =
+  const color =
     tone === 'warning'
       ? 'text-[#ff6b5a]'
       : tone === 'caution'
@@ -50,7 +50,7 @@ function Field({
   return (
     <div className="flex items-baseline justify-between gap-3 border-b border-line/50 py-1.5">
       <span className="silkscreen text-muted">{label}</span>
-      <span className={`font-mono text-sm tabular-nums ${colour}`}>
+      <span className={`font-mono text-sm tabular-nums ${color}`}>
         {value}
         {unit && <span className="ml-1 text-[0.65rem] text-muted">{unit}</span>}
       </span>

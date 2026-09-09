@@ -21,7 +21,7 @@ export function ControlGroup({
   )
 }
 
-/** A labelled select, styled as a rotary switch's position readout. */
+/** A labeled select, styled as a rotary switch's position readout. */
 export function Select<T extends string | number>({
   label,
   value,
@@ -59,7 +59,7 @@ export function Select<T extends string | number>({
   )
 }
 
-/** A labelled slider with a live value readout. */
+/** A labeled slider with a live value readout. */
 export function Slider({
   label,
   value,

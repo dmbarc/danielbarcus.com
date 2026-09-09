@@ -87,7 +87,7 @@ check('offset shifts the trigger level with DC coupling', triggerPhase(
 
 console.log('\ntrigger anchoring — the trace must stand still')
 {
-  // For several levels, the signal at the centre of the window must equal
+  // For several levels, the signal at the center of the window must equal
   // the trigger level and be moving in the chosen direction.
   const levels = [-1.5, -0.8, 0, 0.5, 1.2]
   const c = channel()
@@ -97,20 +97,20 @@ console.log('\ntrigger anchoring — the trace must stand still')
   for (const level of levels) {
     const tStart = triggerStartTime(c, level, 'rising', window)
     if (tStart === null) { allMatch = false; break }
-    const centre = tStart + window / 2
-    const v = sourceValueAt(c.source, centre)
+    const center = tStart + window / 2
+    const v = sourceValueAt(c.source, center)
     if (!near(v, level, 1e-6)) allMatch = false
-    const ahead = sourceValueAt(c.source, centre + 1e-9)
+    const ahead = sourceValueAt(c.source, center + 1e-9)
     if (ahead <= v) allRising = false
   }
-  check('window centre sits exactly on the trigger level', allMatch)
+  check('window center sits exactly on the trigger level', allMatch)
   check('and the signal is rising there', allRising)
 
   const falling = triggerStartTime(c, 0.5, 'falling', window)!
-  const centre = falling + window / 2
+  const center = falling + window / 2
   check('falling slope anchors on a falling edge',
-    near(sourceValueAt(c.source, centre), 0.5, 1e-6) &&
-    sourceValueAt(c.source, centre + 1e-9) < 0.5)
+    near(sourceValueAt(c.source, center), 0.5, 1e-6) &&
+    sourceValueAt(c.source, center + 1e-9) < 0.5)
 
   check('the window never starts before zero',
     levels.every((l) => (triggerStartTime(c, l, 'rising', window) ?? 0) >= 0))

@@ -19,7 +19,7 @@ const CH2 = '#4ea1c4'
  * The hero trace: two channels drawn per frame from their signal
  * parameters, on a 12x6 graticule. This is decoration on the home page,
  * but it is the same drawing routine the full oscilloscope demo uses —
- * so it is worth it being honest about how a scope actually rasterises.
+ * so it is worth it being honest about how a scope actually rasterizes.
  */
 export function ScopeTrace({ className = '' }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -62,7 +62,7 @@ export function ScopeTrace({ className = '' }: Props) {
         ctx.lineTo(w, y)
         ctx.stroke()
       }
-      // Centre cross, brighter than the rest — as on a real graticule.
+      // Center cross, brighter than the rest — as on a real graticule.
       ctx.strokeStyle = AXIS
       ctx.beginPath()
       ctx.moveTo(0, Math.round(h / 2) + 0.5)
@@ -78,13 +78,13 @@ export function ScopeTrace({ className = '' }: Props) {
       amp: number,
       freq: number,
       drift: number,
-      colour: string,
+      color: string,
       glow: number,
     ) {
       if (!ctx) return
-      ctx.strokeStyle = colour
+      ctx.strokeStyle = color
       ctx.lineWidth = 2
-      ctx.shadowColor = colour
+      ctx.shadowColor = color
       ctx.shadowBlur = glow
       ctx.beginPath()
       for (let x = 0; x <= w; x += 2) {

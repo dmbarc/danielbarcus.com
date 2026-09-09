@@ -185,7 +185,7 @@ console.log('\neach fault is distinguishable on a meter')
   check('so the lamp is dark', !lampState('lamp-shorted', true).lit)
 }
 
-console.log('\nohmmeter behaviour')
+console.log('\nohmmeter behavior')
 {
   const open = readMeter('lamp-open', true, 'ohms', 'TP3', 'TP4')
   check('an open filament reads over-limit', open.display === 'O.L.')

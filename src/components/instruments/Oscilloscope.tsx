@@ -20,8 +20,8 @@ import {
 } from '../../lib/signal'
 import { ControlGroup, Segmented, Select, Slider } from '../ui/Control'
 
-const CH1_COLOUR = '#ffb000'
-const CH2_COLOUR = '#4ea1c4'
+const CH1_COLOR = '#ffb000'
+const CH2_COLOR = '#4ea1c4'
 const SCREEN = '#0c0b07'
 const GRATICULE = '#241f14'
 const AXIS = '#3a3527'
@@ -49,7 +49,7 @@ const initialCh2: Channel = {
 /**
  * A two-channel oscilloscope with a function generator on each input.
  *
- * The behaviour worth noticing is the trigger: with a level the signal
+ * The behavior worth noticing is the trigger: with a level the signal
  * actually reaches, the window anchors to an exact crossing and the trace
  * stands still. Move the level past the peak and it stops triggering —
  * AUTO free-runs and the trace slides, NORMAL holds the last sweep. That
@@ -151,7 +151,7 @@ export function Oscilloscope() {
 
     function drawChannel(
       channel: Channel,
-      colour: string,
+      color: string,
       w: number,
       h: number,
       tStart: number,
@@ -160,9 +160,9 @@ export function Oscilloscope() {
       if (!ctx || !channel.enabled) return
       const pxPerDiv = h / V_DIVS
       const mid = h / 2 - channel.position * pxPerDiv
-      ctx.strokeStyle = colour
+      ctx.strokeStyle = color
       ctx.lineWidth = 2
-      ctx.shadowColor = colour
+      ctx.shadowColor = color
       ctx.shadowBlur = 10
       ctx.beginPath()
       let started = false
@@ -186,7 +186,7 @@ export function Oscilloscope() {
       ctx.shadowBlur = 0
 
       // Ground marker on the left rail.
-      ctx.fillStyle = colour
+      ctx.fillStyle = color
       ctx.beginPath()
       ctx.moveTo(0, mid)
       ctx.lineTo(8, mid - 5)
@@ -224,17 +224,17 @@ export function Oscilloscope() {
         tStart = lastStart
       }
 
-      drawChannel(s.ch1, CH1_COLOUR, w, h, tStart, windowSeconds)
-      drawChannel(s.ch2, CH2_COLOUR, w, h, tStart, windowSeconds)
+      drawChannel(s.ch1, CH1_COLOR, w, h, tStart, windowSeconds)
+      drawChannel(s.ch2, CH2_COLOR, w, h, tStart, windowSeconds)
 
       // Trigger level marker on the right rail, in the source channel's
-      // colour and vertical scale.
+      // color and vertical scale.
       const pxPerDiv = h / V_DIVS
-      const srcColour = s.triggerSource === 'ch1' ? CH1_COLOUR : CH2_COLOUR
+      const srcColor = s.triggerSource === 'ch1' ? CH1_COLOR : CH2_COLOR
       const mid = h / 2 - src.position * pxPerDiv
       const ty = mid - (s.triggerLevel / src.voltsPerDiv) * pxPerDiv
       if (ty > 0 && ty < h) {
-        ctx.strokeStyle = srcColour
+        ctx.strokeStyle = srcColor
         ctx.setLineDash([4, 4])
         ctx.lineWidth = 1
         ctx.beginPath()
@@ -242,7 +242,7 @@ export function Oscilloscope() {
         ctx.lineTo(w, ty)
         ctx.stroke()
         ctx.setLineDash([])
-        ctx.fillStyle = srcColour
+        ctx.fillStyle = srcColor
         ctx.beginPath()
         ctx.moveTo(w, ty)
         ctx.lineTo(w - 8, ty - 5)
