@@ -8,6 +8,7 @@ import { Home } from './pages/Home'
 import { InstrumentFaultIsolation } from './pages/InstrumentFaultIsolation'
 import { InstrumentOscilloscope } from './pages/InstrumentOscilloscope'
 import { InstrumentMfd } from './pages/InstrumentMfd'
+import { ProjectIdleExplorers } from './pages/ProjectIdleExplorers'
 import { ProjectBoomsweeper } from './pages/ProjectBoomsweeper'
 import { NotFound } from './pages/NotFound'
 
@@ -21,6 +22,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="instruments/fault-isolation" element={<InstrumentFaultIsolation />} />
           <Route path="instruments/mfd" element={<InstrumentMfd />} />
           <Route path="projects/boomsweeper" element={<ProjectBoomsweeper />} />
+          <Route path="projects/idle-explorers" element={<ProjectIdleExplorers />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

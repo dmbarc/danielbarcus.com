@@ -153,8 +153,10 @@ export const projects: Project[] = [
       default and the API is the only way in. The build refuses to compile if a secret-class key ever
       appears in client config.`,
     tags: ['C#', 'ASP.NET Core', 'Postgres', 'Unity', 'WebGL'],
-    status: 'Parked · source public',
-    statusTone: 'idle',
+    status: 'Playable · source public',
+    statusTone: 'live',
+    to: '/projects/idle-explorers',
+    toLabel: 'Try the web build',
     href: 'https://github.com/dmbarc/Idle-Explorers-MMO',
     hrefLabel: 'Read the source',
   },

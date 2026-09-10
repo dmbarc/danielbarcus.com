@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes"
+    />
+    <title>Idle Explorers MMO</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico" />
+    <style>
+      /*
+        Unity's stock template hardcodes canvas.style.width = "960px", which
+        overflows any container narrower than that and leaves the canvas hanging
+        off the edge. Everything here exists so the canvas is exactly the size of
+        whatever holds it: an iframe, a phone, a fullscreen window.
+      */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #0c0b07;
+      }
+
+      #unity-container {
+        position: absolute;
+        inset: 0;
+      }
+
+      #unity-canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: #0c0b07;
+        /* The game is played by tapping tiles. A long-press context menu or a
+           double-tap zoom in the middle of that is a lost move. */
+        touch-action: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      #unity-loading-bar {
+        position: absolute;
+        inset: 0;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        background: #0c0b07;
+        font: 500 11px/1 ui-monospace, "JetBrains Mono", Consolas, monospace;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #7e7660;
+      }
+
+      #unity-progress-bar-empty {
+        width: min(240px, 60vw);
+        height: 3px;
+        background: #241f14;
+      }
+
+      #unity-progress-bar-full {
+        width: 0%;
+        height: 100%;
+        background: #ffb000;
+        transition: width 0.2s linear;
+      }
+
+      #unity-warning {
+        position: absolute;
+        left: 50%;
+        top: 12px;
+        transform: translate(-50%);
+        z-index: 10;
+        font: 400 13px/1.4 system-ui, sans-serif;
+      }
+
+      #unity-warning > div {
+        margin-bottom: 6px;
+        padding: 10px 14px;
+        border-radius: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="unity-container">
+      <canvas id="unity-canvas" tabindex="-1"></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-loading-label">Loading Idle Explorers MMO</div>
+        <div id="unity-progress-bar-empty"><div id="unity-progress-bar-full"></div></div>
+      </div>
+      <div id="unity-warning"></div>
+    </div>
+
+    <script>
+      var canvas = document.querySelector('#unity-canvas')
+
+      function unityShowBanner(msg, type) {
+        var warningBanner = document.querySelector('#unity-warning')
+        function updateBannerVisibility() {
+          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none'
+        }
+        var div = document.createElement('div')
+        div.innerHTML = msg
+        warningBanner.appendChild(div)
+        if (type == 'error') {
+          div.style = 'background: #7a2018; color: #fff; padding: 10px;'
+        } else {
+          if (type == 'warning') div.style = 'background: #e8a33d; color: #17150f; padding: 10px;'
+          setTimeout(function () {
+            warningBanner.removeChild(div)
+            updateBannerVisibility()
+          }, 5000)
+        }
+        updateBannerVisibility()
+      }
+
+      var buildUrl = 'Build'
+      var loaderUrl = buildUrl + '/WebGL.loader.js'
+      var config = {
+        arguments: [],
+        dataUrl: buildUrl + '/WebGL.data.unityweb',
+        frameworkUrl: buildUrl + '/WebGL.framework.js.unityweb',
+        codeUrl: buildUrl + '/WebGL.wasm.unityweb',
+        streamingAssetsUrl: 'StreamingAssets',
+        companyName: 'Daniel Barcus',
+        productName: 'Idle Explorers MMO',
+        productVersion: '0.1.0',
+        showBanner: unityShowBanner,
+      }
+
+      // Writes under Application.persistentDataPath survive a revisit rather
+      // than living only as long as the tab, which is what makes the menu's
+      // "continue" mean anything on the web.
+      config.autoSyncPersistentDataPath = true
+
+      // Cap the render target on high-DPI screens. A phone reporting 3x would
+      // otherwise render nine times the pixels for a game of flat tiles.
+      config.devicePixelRatio = Math.min(window.devicePixelRatio || 1, 2)
+
+      document.querySelector('#unity-loading-bar').style.display = 'flex'
+
+      var script = document.createElement('script')
+      script.src = loaderUrl
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          document.querySelector('#unity-progress-bar-full').style.width = 100 * progress + '%'
+        })
+          .then((unityInstance) => {
+            document.querySelector('#unity-loading-bar').style.display = 'none'
+            window.unityInstance = unityInstance
+          })
+          .catch((message) => {
+            unityShowBanner(message, 'error')
+          })
+      }
+
+      document.body.appendChild(script)
+    </script>
+  </body>
+</html>
