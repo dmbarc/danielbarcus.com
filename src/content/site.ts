@@ -124,6 +124,19 @@ export const demos: Demo[] = [
     status: 'live',
     to: '/instruments/mfd',
   },
+  {
+    id: 'model-viewer',
+    index: '04',
+    name: '3D Model Viewer',
+    blurb: 'An inline-four you can orbit, pan, and take apart by clicking.',
+    detail: `Drag to orbit, scroll to zoom, click any part to read what it does. The pistons are
+      driven by the real slider-crank geometry rather than a sine wave, so they linger at the
+      bottom of the stroke and snap through the top the way an engine actually turns over. It is
+      built from primitives at runtime, so the repository holds no binary model at all.`,
+    tags: ['Unity', 'C#', 'WebGL', 'Mechanics'],
+    status: 'live',
+    to: '/instruments/model-viewer',
+  },
 ]
 
 /** Shipped and personal work that exists outside this site. */
