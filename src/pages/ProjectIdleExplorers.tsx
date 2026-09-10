@@ -27,10 +27,14 @@ export function ProjectIdleExplorers() {
           </p>
         </header>
 
+        {/* Accurate as of this deploy: the client has a PLAY AS GUEST button and the
+            server collects guests that go quiet, but the Supabase project has
+            anonymous sign-ins switched off, so the button comes back 422. This notice
+            comes out the moment that setting is flipped, and not before. */}
         <div className="mb-4 border border-caution/40 bg-caution/5 px-4 py-3 text-[0.8125rem] leading-relaxed text-body">
           <span className="silkscreen mr-2 text-caution">Needs an account</span>
-          The client signs in through Supabase before the server will tell it anything, so trying
-          it currently means making one. Guest sign-in is the next thing being built.
+          The server tells an unauthenticated client nothing, so trying it means signing up for
+          now. Guest sign-in is built and waiting on one provider setting.
         </div>
 
         <GameEmbed
