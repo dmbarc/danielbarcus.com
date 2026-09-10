@@ -154,11 +154,11 @@ export function solve(net: Netlist): Solution | null {
 
 /**
  * Resistance between two nodes as an ohmmeter would read it on a
- * de-energised circuit. Injects a 1 A test current and reads the
+ * de-energized circuit. Injects a 1 A test current and reads the
  * resulting potential difference.
  *
  * Sources are REMOVED rather than shorted. Shorting them is the correct
- * small-signal model, but a technician de-energises by disconnecting the
+ * small-signal model, but a technician de-energizes by disconnecting the
  * supply, which leaves that branch open. Shorting it instead invents a
  * return path and makes every in-circuit reading come back far too low.
  */

@@ -57,7 +57,7 @@ export function InstrumentFaultIsolation() {
               every other one no matter what order you take them in.
             </p>
             <p className="mb-3 text-[0.8125rem] leading-relaxed text-body">
-              Resistance readings de-energise the circuit by removing the source rather than
+              Resistance readings de-energize the circuit by removing the source rather than
               shorting it, which is what disconnecting a supply actually does to the network.
             </p>
             <p className="text-[0.8125rem] leading-relaxed text-body">

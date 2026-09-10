@@ -149,7 +149,7 @@ export function readMeter(
   a: string,
   b: string,
 ): Reading {
-  // Resistance is measured with the circuit de-energised, so the trainer
+  // Resistance is measured with the circuit de-energized, so the trainer
   // opens the breaker for an ohms reading the way a technician would
   // pull it before putting a meter across a component.
   const net = buildCircuit(fault, switchClosed)

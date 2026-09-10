@@ -22,8 +22,8 @@ export function ProjectIdleExplorers() {
           </h1>
           <p className="max-w-[65ch] text-[0.95rem] leading-relaxed text-body">
             An idle MMO where the rules live on the server and the client is only allowed to ask.
-            The game itself is parked, but the architecture is the part worth reading, and the
-            build below is the real client talking to the real API.
+            I have stopped adding features, but it is running: the build below is the real client
+            talking to the real API, and you can sign in as a guest without making an account.
           </p>
         </header>
 

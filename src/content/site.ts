@@ -17,14 +17,15 @@ export const profile = {
 }
 
 export const hero = {
-  eyebrow: 'CH1 — SOFTWARE ENGINEER II',
+  eyebrow: 'SOFTWARE ENGINEER II — SIMULATION & FULL-STACK',
   headline: 'I develop highly-interactive software and experiences.',
   lede: `Five years of Unity and C#/.NET training simulations for military maintenance — cockpit
     interfaces, electrical diagnostics, and instruments modeled straight from the engineering
     drawings, for the people who then go fix the real aircraft.`,
-  // The invitation matters more than the claim: the instruments below are
-  // running code, not screenshots.
-  cta: 'The instruments on this site are real. Turn the knobs.',
+  // The invitation matters more than the claim: these are running code, not
+  // screenshots. "Turn the knobs" only described the oscilloscope, which was
+  // the only one of them when it was written.
+  cta: 'Everything in this section runs in your browser. Use it, break it, take it apart.',
 }
 
 export const readout = [
@@ -61,13 +62,14 @@ export const about = {
 export const disclosure = {
   heading: 'How these were built',
   short: 'AI-generated demos — built by me with Claude Code',
-  body: `I built these three demos with Claude Code, using generative AI to write the
-    implementations. What I brought is the subject matter: the oscilloscope, the electrical
-    diagnostics, and the cockpit display are all things I worked on at Carley, and I specified
-    each demo, chose what was worth showing, and checked that the behavior matches the real
-    equipment. What I did not do is hand-write the code.`,
+  body: `I built the demos in this section with Claude Code, using generative AI to write the
+    implementations. What I brought is the subject matter. The oscilloscope, the electrical
+    diagnostics, and the cockpit display are all things I worked on at Carley; the engine viewer
+    is the same skill pointed at a mechanism instead of a circuit. I specified each one, decided
+    what was worth showing, and checked the behavior against how the real equipment works. What I
+    did not do is hand-write the code.`,
   why: `I am telling you this up front because you would want to know, and because directing an
-    AI to build working software is itself part of how I work now. The projects below —
+    AI to build working software is part of how I work now. The projects further down —
     Boomsweeper and Idle Explorers — are my own code.`,
 }
 
@@ -116,10 +118,11 @@ export const demos: Demo[] = [
     index: '03',
     name: 'Multi-Function Display',
     blurb: 'A glass cockpit panel — softkeys, paged displays, CDU scratchpad.',
-    detail: `I engineered simulated CH-53K MFD and CDU cockpit interfaces in Coherent UI embedded in
-      Unity, and the customer preferred them to the training software they already had. That aircraft
-      is not mine to show, so this is the same interface grammar on an invented airframe: bezel
-      softkeys, page hierarchy, a scratchpad line, and annunciators driven by a small systems model.`,
+    detail: `I built simulated CH-53K cockpit displays in Coherent UI embedded in Unity, and the
+      customer preferred them to the training software they already had. That aircraft is not mine
+      to show, so this is the same kind of panel on an invented one: softkeys down the bezel, pages
+      you switch between, a keypad with a scratchpad line, and warning lights driven by a running
+      model of the aircraft's systems.`,
     tags: ['React', 'State machines', 'Systems model'],
     status: 'live',
     to: '/instruments/mfd',
@@ -127,13 +130,14 @@ export const demos: Demo[] = [
   {
     id: 'model-viewer',
     index: '04',
-    name: '3D Model Viewer',
-    blurb: 'An inline-four you can orbit, pan, and take apart by clicking.',
-    detail: `Drag to orbit, scroll to zoom, click any part to read what it does. The pistons are
-      driven by the real slider-crank geometry rather than a sine wave, so they linger at the
-      bottom of the stroke and snap through the top the way an engine actually turns over. It is
-      built from primitives at runtime, so the repository holds no binary model at all.`,
-    tags: ['Unity', 'C#', 'WebGL', 'Mechanics'],
+    name: 'Interactive Engine Cutaway',
+    blurb: 'A four-cylinder engine in Unity — orbit it, take it apart, ask what each part does.',
+    detail: `The kind of thing I spent five years building at Carley: take a mechanism, work out how
+      it behaves from the engineering side, and turn it into something a person can handle and
+      learn from. Orbit and zoom, strip the block away to watch the mechanism run, explode the
+      whole assembly, and click any part for what it does and why. Unity and C#, running in the
+      browser.`,
+    tags: ['Unity', 'C#', 'WebGL', 'Mechanical modeling'],
     status: 'live',
     to: '/instruments/model-viewer',
   },
@@ -160,11 +164,12 @@ export const projects: Project[] = [
     id: 'idle-explorers',
     name: 'Idle Explorers MMO',
     blurb: 'A server-authoritative Unity MMO on ASP.NET Core and Postgres.',
-    detail: `The game is parked, but the architecture is the part worth reading. Every rule lives on
-      the server in one shared C# tree; the Unity client can only ask, never decide. Row-level
-      security is enabled and forced with no policies on every table, so the database denies by
-      default and the API is the only way in. The build refuses to compile if a secret-class key ever
-      appears in client config.`,
+    detail: `Playable now — press "Play as guest" and it makes you a throwaway character. I have
+      stopped adding features, but the architecture is the part worth looking at. Every rule lives on
+      the server in one shared C# tree, so the Unity client can ask for things and never decide the
+      outcome. Every table denies access by default and the API is the only way through, which is
+      why the client's key is safe to publish. And the build refuses to compile if a secret ever
+      finds its way into client config.`,
     tags: ['C#', 'ASP.NET Core', 'Postgres', 'Unity', 'WebGL'],
     status: 'Playable as guest',
     statusTone: 'live',
@@ -206,9 +211,9 @@ export const experience: Role[] = [
       `Built full-stack Unity training simulations for military mechanical and electrical
        maintenance — UI, 3D world interaction, animation and simulation logic in C# from the ground
        up, across multiple software suites.`,
-      `Engineered simulated CH-53K MFD and CDU cockpit interfaces in Coherent UI (JavaScript, HTML,
-       CSS) embedded in Unity; delivered interfaces the customer praised over their existing training
-       software.`,
+      `Engineered simulated CH-53K cockpit displays — the multi-function displays and control unit
+       the crew actually operate — in Coherent UI (JavaScript, HTML, CSS) embedded in Unity;
+       delivered interfaces the customer praised over their existing training software.`,
       `Built a fully functional waveform generator and oscilloscope simulation that replicated real
        device behavior in real time.`,
       `Interpreted electrical diagrams, engineering drawings and repair manuals to model accurate

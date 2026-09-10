@@ -36,9 +36,10 @@ export function InstrumentMfd() {
                 the whole time.
               </li>
               <li>
-                Annunciators are derived from values against limits, never from the fault list. A
-                light means a limit was genuinely crossed, which is why losing HYD 2 walks through
-                low pressure before pressure lost as it bleeds down.
+                The warning lights are driven by values crossing limits, never by the fault list
+                itself. A light means a limit was genuinely exceeded, which is why losing the second
+                hydraulic system walks through low pressure and on to pressure lost as it bleeds
+                down, rather than jumping straight to the worst state.
               </li>
               <li>
                 The CDU refuses an invalid entry into the message line rather than silently
@@ -50,14 +51,14 @@ export function InstrumentMfd() {
           <article className="bg-panel p-5">
             <h2 className="mb-3 text-base font-semibold">Where it comes from</h2>
             <p className="mb-3 text-[0.8125rem] leading-relaxed text-body">
-              I engineered simulated CH-53K MFD and CDU cockpit interfaces in Coherent UI — a
-              browser engine embedded inside Unity, so the panels were built in JavaScript, HTML and
-              CSS against a C# simulation behind them. The customer preferred them to the training
-              software they already had.
+              I built simulated CH-53K cockpit displays in Coherent UI — a browser engine embedded
+              inside Unity, so the panels themselves were JavaScript, HTML and CSS running against a
+              C# simulation behind them. The customer preferred them to the training software they
+              already had.
             </p>
             <p className="text-[0.8125rem] leading-relaxed text-body">
-              That aircraft is not mine to show. This is the same interface grammar and the same
-              separation of model from display, on an airframe I invented.
+              That aircraft is not mine to show. This is the same way of building a panel, and the
+              same separation between the model and the display, on an airframe I made up.
             </p>
             <div className="mt-4 flex flex-wrap gap-1.5">
               {demo.tags.map((t) => (
