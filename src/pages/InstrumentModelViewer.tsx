@@ -36,7 +36,8 @@ export function InstrumentModelViewer() {
           <span>Scroll — zoom</span>
           <span>Click — inspect a part</span>
           <span>C — cutaway</span>
-          <span>Space — pause</span>
+          <span>X — exploded view</span>
+          <span>Space — animation on/off</span>
           <span>R — reset view</span>
         </div>
 
