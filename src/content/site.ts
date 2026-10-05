@@ -263,3 +263,72 @@ export const education = [
   { what: 'B.S. Computer Science', where: 'University of North Georgia', when: 'Dec 2016' },
   { what: 'Professional Scrum Master I', where: 'Scrum.org', when: 'Oct 2020' },
 ]
+
+/** The game studio Daniel runs, linked from the hero, the showcase and the footer. */
+export const studio = {
+  name: 'Biggietronics',
+  url: 'https://www.biggietronics.com',
+  urlLabel: 'biggietronics.com',
+  role: 'Founder & developer',
+  blurb: `My independent game studio. I design, build and ship the games myself in Unity and C#,
+    from the first prototype to the store listing, the in-app purchases and the player support
+    inbox.`,
+}
+
+/** The shipped game, shown as the featured project. */
+export const boomsweeper = {
+  name: 'Boomsweeper',
+  kicker: 'Out now on Google Play',
+  tagline: 'The Minesweeper incremental.',
+  pitch: `An explosive incremental twist on classic Minesweeper. Clear tiles, bank points, and
+    grow one click into a billion.`,
+  playUrl: 'https://play.google.com/store/apps/details?id=com.biggieboy.boomsweeper',
+  studioUrl: 'https://www.biggietronics.com/boomsweeper/',
+  icon: '/showcase/boomsweeper-icon.png',
+  feature: '/showcase/feature.jpg',
+  trailer: '/showcase/boomsweeper-trailer.mp4',
+  poster: '/showcase/still-sweep.jpg',
+  facts: [
+    { key: 'Platform', value: 'Android' },
+    { key: 'Price', value: 'Free' },
+    { key: 'Languages', value: '11' },
+    { key: 'Talents', value: '58' },
+  ],
+  features: [
+    {
+      name: 'Sweep',
+      body: `It plays like the Minesweeper you know, but every safe tile pays. Crits, hot streaks
+        and chain reactions make big openings pay a lot more.`,
+      image: '/showcase/phone-early-sweep-crits.jpg',
+      still: '/showcase/still-sweep.jpg',
+    },
+    {
+      name: 'Upgrade',
+      body: `Bank points between boards and spend them on 58 talents: wider boards, deeper fields
+        and stranger tricks like reversed polarity.`,
+      image: '/showcase/phone-talents-top.jpg',
+      still: '/showcase/still-talents.jpg',
+    },
+    {
+      name: 'Hire a crew',
+      body: `Prospectors, Engineers and Oracles walk the board and dig for you while you plan the
+        next move.`,
+      image: '/showcase/phone-crew-at-work.jpg',
+      still: '/showcase/still-crew.jpg',
+    },
+    {
+      name: 'Go deeper',
+      body: `Some tiles hide whole boards inside them, and those boards can hide more.`,
+      image: '/showcase/phone-pocket-on-board.jpg',
+      still: '/showcase/still-nested.jpg',
+    },
+  ],
+  built: [
+    `Unity 6 and C#, with the game rules in a plain C# library that is tested without the engine.`,
+    `Google Play Billing for a one-time "Remove ads" purchase, re-checked on every launch so it
+      restores on a new phone.`,
+    `AdMob with Google's consent flow for GDPR and US state privacy laws.`,
+    `Localized into 11 languages, plays fully offline, three save slots.`,
+  ],
+  tags: ['Unity', 'C#', 'Android', 'Google Play Billing', 'AdMob'],
+}

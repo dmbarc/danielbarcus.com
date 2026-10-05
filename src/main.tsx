@@ -12,12 +12,18 @@ import { InstrumentMfd } from './pages/InstrumentMfd'
 import { ProjectIdleExplorers } from './pages/ProjectIdleExplorers'
 import { ProjectBoomsweeper } from './pages/ProjectBoomsweeper'
 import { NotFound } from './pages/NotFound'
+import { HomeA } from './pages/proposals/HomeA'
+import { HomeB } from './pages/proposals/HomeB'
+import { HomeC } from './pages/proposals/HomeC'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
+        <Route path="proposal-c" element={<HomeC />} />
         <Route element={<Layout />}>
+          <Route path="proposal-a" element={<HomeA />} />
+          <Route path="proposal-b" element={<HomeB />} />
           <Route index element={<Home />} />
           <Route path="instruments/oscilloscope" element={<InstrumentOscilloscope />} />
           <Route path="instruments/fault-isolation" element={<InstrumentFaultIsolation />} />
