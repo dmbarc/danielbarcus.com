@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 
-import { profile } from '../content/site'
+import { profile, studio } from '../content/site'
 
 /**
  * Softkeys address sections of the home page, not routes, so these are
@@ -14,9 +14,10 @@ import { profile } from '../content/site'
  */
 const nav = [
   { key: 'L1', label: 'Home', hash: '' },
-  { key: 'L2', label: 'Instruments', hash: '#instruments' },
-  { key: 'L3', label: 'Work', hash: '#work' },
-  { key: 'L4', label: 'About', hash: '#about' },
+  { key: 'L2', label: 'Boomsweeper', hash: '#boomsweeper' },
+  { key: 'L3', label: 'Instruments', hash: '#instruments' },
+  { key: 'L4', label: 'Work', hash: '#work' },
+  { key: 'L5', label: 'About', hash: '#about' },
 ]
 
 /** What a detail route is called, for the bezel's back key. */
@@ -124,6 +125,14 @@ export function Layout() {
             {profile.name} · {profile.location}
           </p>
           <div className="flex flex-wrap gap-4">
+            <a
+              className="silkscreen text-amber hover:text-bright"
+              href={studio.url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {studio.name}
+            </a>
             <a className="silkscreen text-cyan hover:text-amber" href={`mailto:${profile.email}`}>
               Email
             </a>

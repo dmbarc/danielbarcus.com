@@ -17,23 +17,15 @@ export const profile = {
 }
 
 export const hero = {
-  eyebrow: 'SOFTWARE ENGINEER II — SIMULATION & FULL-STACK',
+  eyebrow: 'Software engineer · Founder & developer, Biggietronics',
   headline: 'I develop highly-interactive software and experiences.',
-  lede: `Five years of Unity and C#/.NET training simulations for military maintenance — cockpit
-    interfaces, electrical diagnostics, and instruments modeled straight from the engineering
-    drawings, for the people who then go fix the real aircraft.`,
+  lede: `I run Biggietronics, an independent game studio, and spent five years before that
+    building Unity and C# training simulations for military aircraft maintenance.`,
   // The invitation matters more than the claim: these are running code, not
   // screenshots. "Turn the knobs" only described the oscilloscope, which was
   // the only one of them when it was written.
   cta: 'Everything in this section runs in your browser. Use it, break it, take it apart.',
 }
-
-export const readout = [
-  { key: 'Experience', value: '5+ yrs', channel: 1 },
-  { key: 'Primary stack', value: 'C# / .NET', channel: 2 },
-  { key: 'Engine', value: 'Unity', channel: 1 },
-  { key: 'Certified', value: 'PSM I', channel: 2 },
-] as const
 
 export const about = {
   heading: 'About',
@@ -46,6 +38,9 @@ export const about = {
      Tier 3 incidents, overnight on-call, nightly installs. I have restored the deli labeling system
      at 4am so a store could open on time. That work taught me more about writing software people
      depend on than any project since.`,
+    `Since then I have been running Biggietronics, my own game studio. Its first game,
+     Boomsweeper, launched on Google Play in October 2026: designed, built, localized and shipped
+     by me, from the first prototype to the store listing.`,
     `I am looking for my next role now — my position at Carley ended in August 2026 when the
      contracts that funded that line of work were not awarded. I am open to simulation, games,
      backend .NET, or full-stack web.`,
@@ -69,7 +64,7 @@ export const disclosure = {
     what was worth showing, and checked the behavior against how the real equipment works. What I
     did not do is hand-write the code.`,
   why: `I am telling you this up front because you would want to know, and because directing an
-    AI to build working software is part of how I work now. The projects further down —
+    AI to build working software is part of how I work now. The projects on this site —
     Boomsweeper and Idle Explorers — are my own code.`,
 }
 
@@ -181,15 +176,14 @@ export const projects: Project[] = [
   {
     id: 'boomsweeper',
     name: 'Boomsweeper',
-    blurb: 'An idle minesweeper for Android where flags score nothing, on purpose.',
-    detail: `Flagging a mine earns you exactly zero. The only way to score is to keep clicking cells
-      you are not certain about, which turns the safest move in minesweeper into the least rewarding
-      one. Currently in development toward a store release.`,
-    tags: ['Unity', 'C#', 'Android', 'WebGL'],
-    status: 'Demo playable here',
+    blurb: 'The Minesweeper incremental, out now on Google Play.',
+    detail: `An explosive incremental twist on classic Minesweeper, made at my studio,
+      Biggietronics.`,
+    tags: ['Unity', 'C#', 'Android', 'Google Play Billing', 'AdMob'],
+    status: 'Out now on Google Play',
     statusTone: 'live',
     to: '/projects/boomsweeper',
-    toLabel: 'Play the demo',
+    toLabel: 'See the game',
   },
 ]
 
@@ -202,6 +196,20 @@ export type Role = {
 }
 
 export const experience: Role[] = [
+  {
+    org: 'Biggietronics',
+    title: 'Founder & Developer',
+    location: 'Rome, GA',
+    dates: '2026 – Present',
+    bullets: [
+      `Shipped Boomsweeper, a Minesweeper incremental for Android, on Google Play in October 2026,
+       built in Unity 6 and C#.`,
+      `Integrated Google Play Billing for a one-time "Remove ads" purchase, AdMob ads behind Google's
+       GDPR and US-state consent flow, and Google Play achievements.`,
+      `Localized the game and its store listing into 11 languages; run the studio website, support
+       inbox and community Discord.`,
+    ],
+  },
   {
     org: 'Carley Corporation',
     title: 'Software Engineer II',
@@ -263,3 +271,75 @@ export const education = [
   { what: 'B.S. Computer Science', where: 'University of North Georgia', when: 'Dec 2016' },
   { what: 'Professional Scrum Master I', where: 'Scrum.org', when: 'Oct 2020' },
 ]
+
+/** The game studio Daniel runs, linked from the hero, the showcase and the footer. */
+export const studio = {
+  name: 'Biggietronics',
+  url: 'https://www.biggietronics.com',
+  urlLabel: 'biggietronics.com',
+  role: 'Founder & developer',
+  blurb: `My independent game studio. I design, build and ship the games myself in Unity and C#,
+    from the first prototype to the store listing, the in-app purchases and the player support
+    inbox.`,
+}
+
+/** Asset paths follow Vite's base, so a preview build can live under any path. */
+const base = import.meta.env.BASE_URL
+
+/** The shipped game, shown as the featured project. */
+export const boomsweeper = {
+  name: 'Boomsweeper',
+  kicker: 'Out now on Google Play',
+  tagline: 'The Minesweeper incremental.',
+  pitch: `An explosive incremental twist on classic Minesweeper. Clear tiles, bank points, and
+    grow one click into a billion.`,
+  playUrl: 'https://play.google.com/store/apps/details?id=com.biggieboy.boomsweeper',
+  studioUrl: 'https://www.biggietronics.com/boomsweeper/',
+  icon: `${base}showcase/boomsweeper-icon.png`,
+  feature: `${base}showcase/feature.jpg`,
+  trailer: `${base}showcase/boomsweeper-trailer.mp4`,
+  poster: `${base}showcase/still-sweep.jpg`,
+  facts: [
+    { key: 'Platform', value: 'Android' },
+    { key: 'Price', value: 'Free' },
+    { key: 'Languages', value: '11' },
+    { key: 'Talents', value: '58' },
+  ],
+  features: [
+    {
+      name: 'Sweep',
+      body: `It plays like the Minesweeper you know, but every safe tile pays. Crits, hot streaks
+        and chain reactions make big openings pay a lot more.`,
+      image: `${base}showcase/phone-early-sweep-crits.jpg`,
+      still: `${base}showcase/still-sweep.jpg`,
+    },
+    {
+      name: 'Upgrade',
+      body: `Bank points between boards and spend them on 58 talents: wider boards, deeper fields
+        and stranger tricks like reversed polarity.`,
+      image: `${base}showcase/phone-talents-top.jpg`,
+      still: `${base}showcase/still-talents.jpg`,
+    },
+    {
+      name: 'Hire a crew',
+      body: `Prospectors, Engineers and Oracles walk the board and dig for you while you plan the
+        next move.`,
+      image: `${base}showcase/phone-crew-at-work.jpg`,
+      still: `${base}showcase/still-crew.jpg`,
+    },
+    {
+      name: 'Go deeper',
+      body: `Some tiles hide whole boards inside them, and those boards can hide more.`,
+      image: `${base}showcase/phone-pocket-on-board.jpg`,
+      still: `${base}showcase/still-nested.jpg`,
+    },
+  ],
+  built: [
+    `Unity 6 and C#, with the game rules in a plain C# library that is tested without the engine.`,
+    `Google Play Billing for a one-time "Remove ads" purchase, re-checked on every launch so it
+      restores on a new phone.`,
+    `AdMob with Google's consent flow for GDPR and US state privacy laws.`,
+    `Localized into 11 languages, plays fully offline, three save slots.`,
+  ],
+  tags: ['Unity', 'C#', 'Android', 'Google Play Billing', 'AdMob'],
+}
