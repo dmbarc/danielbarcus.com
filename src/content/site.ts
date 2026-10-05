@@ -275,6 +275,9 @@ export const studio = {
     inbox.`,
 }
 
+/** Asset paths follow Vite's base, so a preview build can live under any path. */
+const base = import.meta.env.BASE_URL
+
 /** The shipped game, shown as the featured project. */
 export const boomsweeper = {
   name: 'Boomsweeper',
@@ -284,10 +287,10 @@ export const boomsweeper = {
     grow one click into a billion.`,
   playUrl: 'https://play.google.com/store/apps/details?id=com.biggieboy.boomsweeper',
   studioUrl: 'https://www.biggietronics.com/boomsweeper/',
-  icon: '/showcase/boomsweeper-icon.png',
-  feature: '/showcase/feature.jpg',
-  trailer: '/showcase/boomsweeper-trailer.mp4',
-  poster: '/showcase/still-sweep.jpg',
+  icon: `${base}showcase/boomsweeper-icon.png`,
+  feature: `${base}showcase/feature.jpg`,
+  trailer: `${base}showcase/boomsweeper-trailer.mp4`,
+  poster: `${base}showcase/still-sweep.jpg`,
   facts: [
     { key: 'Platform', value: 'Android' },
     { key: 'Price', value: 'Free' },
@@ -299,28 +302,28 @@ export const boomsweeper = {
       name: 'Sweep',
       body: `It plays like the Minesweeper you know, but every safe tile pays. Crits, hot streaks
         and chain reactions make big openings pay a lot more.`,
-      image: '/showcase/phone-early-sweep-crits.jpg',
-      still: '/showcase/still-sweep.jpg',
+      image: `${base}showcase/phone-early-sweep-crits.jpg`,
+      still: `${base}showcase/still-sweep.jpg`,
     },
     {
       name: 'Upgrade',
       body: `Bank points between boards and spend them on 58 talents: wider boards, deeper fields
         and stranger tricks like reversed polarity.`,
-      image: '/showcase/phone-talents-top.jpg',
-      still: '/showcase/still-talents.jpg',
+      image: `${base}showcase/phone-talents-top.jpg`,
+      still: `${base}showcase/still-talents.jpg`,
     },
     {
       name: 'Hire a crew',
       body: `Prospectors, Engineers and Oracles walk the board and dig for you while you plan the
         next move.`,
-      image: '/showcase/phone-crew-at-work.jpg',
-      still: '/showcase/still-crew.jpg',
+      image: `${base}showcase/phone-crew-at-work.jpg`,
+      still: `${base}showcase/still-crew.jpg`,
     },
     {
       name: 'Go deeper',
       body: `Some tiles hide whole boards inside them, and those boards can hide more.`,
-      image: '/showcase/phone-pocket-on-board.jpg',
-      still: '/showcase/still-nested.jpg',
+      image: `${base}showcase/phone-pocket-on-board.jpg`,
+      still: `${base}showcase/still-nested.jpg`,
     },
   ],
   built: [

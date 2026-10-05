@@ -139,7 +139,7 @@ export function StudioPanel() {
     <section className="px-4 pt-px sm:px-6" aria-label={studio.name}>
       <div className="mx-auto max-w-5xl">
         <div className="grid items-center gap-5 border border-t-0 border-line bg-[#1c1840] p-6 sm:grid-cols-[auto_1fr_auto]">
-          <img src="/showcase/lockup-cream.svg" alt={studio.name} className="h-14 w-auto" />
+          <img src={`${import.meta.env.BASE_URL}showcase/lockup-cream.svg`} alt={studio.name} className="h-14 w-auto" />
           <p className="max-w-[56ch] text-[0.875rem] leading-relaxed text-[#f4ead3]/80">
             <span className="silkscreen mr-2 text-[#ffc62e]">{studio.role}</span>
             {studio.blurb}
@@ -244,7 +244,7 @@ export function BoomsweeperShowcase() {
 
         <div className="grid gap-px border border-t-0 border-line bg-line md:grid-cols-[1fr_1.2fr]">
           <div className="flex flex-col justify-between gap-5 bg-[#1c1840] p-6">
-            <img src="/showcase/lockup-cream.svg" alt={studio.name} className="h-12 w-auto self-start" />
+            <img src={`${import.meta.env.BASE_URL}showcase/lockup-cream.svg`} alt={studio.name} className="h-12 w-auto self-start" />
             <p className="text-[0.875rem] leading-relaxed text-[#f4ead3]/80">{studio.blurb}</p>
             <a
               href={studio.url}

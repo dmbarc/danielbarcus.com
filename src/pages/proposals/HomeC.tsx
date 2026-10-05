@@ -158,7 +158,7 @@ export function HomeC() {
 
             {/* Studio */}
             <div className="mt-6 grid items-center gap-6 rounded-3xl border border-[#1c1840]/10 bg-white/60 p-7 sm:grid-cols-[auto_1fr_auto]">
-              <img src="/showcase/lockup-navy.svg" alt={studio.name} className="h-14 w-auto" />
+              <img src={`${import.meta.env.BASE_URL}showcase/lockup-navy.svg`} alt={studio.name} className="h-14 w-auto" />
               <p className={`max-w-[56ch] leading-relaxed ${body}`}>{studio.blurb}</p>
               <Btn href={studio.url}>Visit the studio →</Btn>
             </div>

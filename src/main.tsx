@@ -1,9 +1,10 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom'
 
 import './index.css'
 import { Layout } from './components/Layout'
+import { PreviewBar } from './components/PreviewBar'
 import { Home } from './pages/Home'
 import { InstrumentFaultIsolation } from './pages/InstrumentFaultIsolation'
 import { InstrumentOscilloscope } from './pages/InstrumentOscilloscope'
@@ -16,9 +17,13 @@ import { HomeA } from './pages/proposals/HomeA'
 import { HomeB } from './pages/proposals/HomeB'
 import { HomeC } from './pages/proposals/HomeC'
 
+// The review build is served from a sub-path with no server rewrites, so it routes by hash.
+const preview = import.meta.env.VITE_PREVIEW === '1'
+const Router = preview ? HashRouter : BrowserRouter
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path="proposal-c" element={<HomeC />} />
         <Route element={<Layout />}>
@@ -34,6 +39,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+      {preview && <PreviewBar />}
+    </Router>
   </StrictMode>,
 )
