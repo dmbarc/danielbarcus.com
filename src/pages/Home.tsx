@@ -2,16 +2,18 @@ import { Link } from 'react-router-dom'
 
 import { Disclosure } from '../components/Disclosure'
 import { ScopeTrace } from '../components/ScopeTrace'
+import { BoomsweeperShowcase, PlayButton, StudioButton } from '../components/Showcase'
 import {
   about,
+  boomsweeper,
   demos,
   education,
   experience,
   hero,
   profile,
   projects,
-  readout,
   skills,
+  studio,
 } from '../content/site'
 
 const toneClass: Record<string, string> = {
@@ -20,7 +22,7 @@ const toneClass: Record<string, string> = {
   idle: 'text-muted border-line',
 }
 
-export function SectionHead({ id, title, count }: { id: string; title: string; count?: string }) {
+function SectionHead({ id, title, count }: { id: string; title: string; count?: string }) {
   return (
     <div className="mb-6 flex items-baseline gap-4">
       <h2 id={id} className="silkscreen text-[0.8125rem] text-bright">
@@ -32,64 +34,54 @@ export function SectionHead({ id, title, count }: { id: string; title: string; c
   )
 }
 
-export function HeroSection({
-  eyebrow = hero.eyebrow,
-  children,
-}: {
-  eyebrow?: string
-  /** Anything that belongs on the display under the lede, such as call-to-action links. */
-  children?: React.ReactNode
-}) {
+/** A name-first hero: who Daniel is, what he runs, and the game, before anything else. */
+export function HeroSection() {
   return (
-  <section className="px-4 pt-6 sm:px-6">
-    <div className="mx-auto max-w-5xl">
-      {/* On a phone the trace is a band above the text; from `sm` up
-          there is room for the text to sit on the display, over a
-          scrim that keeps it legible against a moving waveform. */}
-      <div className="relative overflow-hidden border-2 border-line bg-screen">
-        <ScopeTrace className="h-[150px] sm:absolute sm:inset-0 sm:h-full" />
-        <div
-          className="pointer-events-none absolute inset-0 hidden sm:block
-                     bg-gradient-to-r from-screen via-screen/85 to-transparent"
-          aria-hidden="true"
-        />
-        <div
-          className="relative px-6 py-7 sm:flex sm:min-h-[340px] sm:flex-col sm:justify-center
-                     sm:px-10 sm:py-10"
-        >
-          <p className="silkscreen mb-4 text-cyan">{eyebrow}</p>
-          <h1
-            className="max-w-[15ch] text-[clamp(1.9rem,5.2vw,3.6rem)] leading-[1.02]
-                       font-bold tracking-tight"
-          >
-            {hero.headline}
-          </h1>
-          <p className="mt-3 max-w-[46ch] text-[0.95rem] leading-relaxed">{hero.lede}</p>
-          {children}
-        </div>
-      </div>
-
-      {/* Readout strip below the display, as on a bench instrument. */}
-      <div className="mt-px grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-4">
-        {readout.map((r) => (
-          <div key={r.key} className="bg-panel px-4 py-3">
-            <div className="silkscreen mb-2 text-muted">{r.key}</div>
-            <div
-              className={`font-mono text-base font-bold tabular-nums ${
-                r.channel === 1 ? 'text-amber' : 'text-cyan'
-              }`}
-            >
-              {r.value}
+    <section className="px-4 pt-6 sm:px-6">
+      <div className="mx-auto max-w-5xl">
+        <div className="relative overflow-hidden border-2 border-line bg-screen">
+          <ScopeTrace className="absolute inset-0 h-full opacity-50" />
+      {/* A scrim keeps the text legible over the moving trace. */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-screen via-screen/80
+                   to-screen/20"
+        aria-hidden="true"
+      />
+          <div className="relative grid gap-8 px-6 py-8 sm:px-10 md:grid-cols-[1.25fr_1fr] md:items-center">
+            <div>
+              <p className="silkscreen mb-4 text-cyan">{hero.eyebrow}</p>
+              <h1 className="text-[clamp(2.4rem,6.5vw,4.4rem)] leading-[0.98] font-bold tracking-tight">
+                {profile.name.replace(' M.', '')}
+              </h1>
+              <p className="mt-4 max-w-[34ch] text-lg leading-snug font-semibold text-bright">
+                {hero.headline}
+              </p>
+              <p className="mt-3 max-w-[50ch] text-[0.9rem] leading-relaxed">{hero.lede}</p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <PlayButton />
+                <StudioButton />
+              </div>
+            </div>
+            <div className="relative mx-auto flex w-full max-w-[340px] justify-center">
+              <img
+                src={boomsweeper.features[2].image}
+                alt=""
+                className="absolute top-8 left-0 w-[52%] -rotate-6 rounded-[1.1rem] border-4 border-rail opacity-80 shadow-xl"
+              />
+              <img
+                src={boomsweeper.features[0].image}
+                alt="Boomsweeper on Android"
+                className="relative z-10 ml-[30%] w-[58%] rotate-3 rounded-[1.1rem] border-4 border-rail shadow-2xl"
+              />
             </div>
           </div>
-        ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   )
 }
 
-export function InstrumentsSection() {
+function InstrumentsSection() {
   return (
   <section className="px-4 py-14 sm:px-6" aria-labelledby="instruments">
     <div className="mx-auto max-w-5xl">
@@ -143,12 +135,12 @@ export function InstrumentsSection() {
   )
 }
 
-export function ProjectsSection({ items = projects }: { items?: typeof projects }) {
+function ProjectsSection({ items = projects }: { items?: typeof projects }) {
   return (
   <section className="px-4 pb-14 sm:px-6" aria-labelledby="work">
     <div className="mx-auto max-w-5xl">
       <SectionHead id="work" title="Projects" />
-      <div className="grid gap-px bg-line sm:grid-cols-2">
+      <div className={`grid gap-px bg-line ${items.length > 1 ? 'sm:grid-cols-2' : ''}`}>
         {items.map((p) => (
           <article key={p.id} className="flex flex-col gap-3 bg-panel p-5">
             <div className="flex flex-wrap items-center justify-between gap-2">
@@ -191,7 +183,7 @@ export function ProjectsSection({ items = projects }: { items?: typeof projects 
   )
 }
 
-export function ExperienceSection() {
+function ExperienceSection() {
   return (
   <section className="px-4 pb-14 sm:px-6" aria-labelledby="experience">
     <div className="mx-auto max-w-5xl">
@@ -228,7 +220,7 @@ export function ExperienceSection() {
   )
 }
 
-export function AboutSection() {
+function AboutSection() {
   return (
   <section className="px-4 pb-14 sm:px-6" aria-labelledby="about">
     <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[1.15fr_1fr]">
@@ -282,7 +274,7 @@ export function AboutSection() {
   )
 }
 
-export function ContactSection() {
+function ContactSection() {
   return (
   <section className="px-4 pb-16 sm:px-6" aria-labelledby="contact">
     <div className="mx-auto max-w-5xl border border-line bg-panel p-8">
@@ -315,6 +307,14 @@ export function ContactSection() {
         >
           GitHub
         </a>
+        <a
+          className="border border-line px-4 py-3 silkscreen text-cyan hover:border-cyan"
+          href={studio.url}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {studio.name}
+        </a>
       </div>
     </div>
   </section>
@@ -325,8 +325,10 @@ export function Home() {
   return (
     <>
       <HeroSection />
+      <BoomsweeperShowcase />
       <InstrumentsSection />
-      <ProjectsSection />
+      {/* Boomsweeper has its own section above, so the grid lists the rest. */}
+      <ProjectsSection items={projects.filter((p) => p.id !== 'boomsweeper')} />
       <ExperienceSection />
       <AboutSection />
       <ContactSection />

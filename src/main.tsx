@@ -1,10 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import './index.css'
 import { Layout } from './components/Layout'
-import { PreviewBar } from './components/PreviewBar'
 import { Home } from './pages/Home'
 import { InstrumentFaultIsolation } from './pages/InstrumentFaultIsolation'
 import { InstrumentOscilloscope } from './pages/InstrumentOscilloscope'
@@ -13,22 +12,12 @@ import { InstrumentMfd } from './pages/InstrumentMfd'
 import { ProjectIdleExplorers } from './pages/ProjectIdleExplorers'
 import { ProjectBoomsweeper } from './pages/ProjectBoomsweeper'
 import { NotFound } from './pages/NotFound'
-import { HomeA } from './pages/proposals/HomeA'
-import { HomeB } from './pages/proposals/HomeB'
-import { HomeC } from './pages/proposals/HomeC'
-
-// The review build is served from a sub-path with no server rewrites, so it routes by hash.
-const preview = import.meta.env.VITE_PREVIEW === '1'
-const Router = preview ? HashRouter : BrowserRouter
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Router>
+    <BrowserRouter>
       <Routes>
-        <Route path="proposal-c" element={<HomeC />} />
         <Route element={<Layout />}>
-          <Route path="proposal-a" element={<HomeA />} />
-          <Route path="proposal-b" element={<HomeB />} />
           <Route index element={<Home />} />
           <Route path="instruments/oscilloscope" element={<InstrumentOscilloscope />} />
           <Route path="instruments/fault-isolation" element={<InstrumentFaultIsolation />} />
@@ -39,7 +28,6 @@ createRoot(document.getElementById('root')!).render(
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
-      {preview && <PreviewBar />}
-    </Router>
+    </BrowserRouter>
   </StrictMode>,
 )

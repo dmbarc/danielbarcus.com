@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 
 import { boomsweeper, studio } from '../content/site'
 
@@ -41,18 +40,9 @@ export function StudioButton({ className = '' }: { className?: string }) {
   )
 }
 
-/** A phone screenshot in a plain bezel. */
-function Phone({ src, alt, className = '' }: { src: string; alt: string; className?: string }) {
-  return (
-    <div className={`overflow-hidden rounded-[1.1rem] border-4 border-rail bg-screen shadow-xl ${className}`}>
-      <img src={src} alt={alt} loading="lazy" width={540} height={960} className="block h-auto w-full" />
-    </div>
-  )
-}
-
 function Facts() {
   return (
-    <dl className="grid grid-cols-4 gap-px border border-line bg-line">
+    <dl className="grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-4">
       {boomsweeper.facts.map((f, i) => (
         <div key={f.key} className="bg-screen px-3 py-2.5">
           <dt className="silkscreen mb-1.5 text-muted">{f.key}</dt>
@@ -62,99 +52,6 @@ function Facts() {
         </div>
       ))}
     </dl>
-  )
-}
-
-/**
- * Proposal A: the shipped game as a single featured panel right under the
- * hero, in the site's existing instrument-panel language.
- */
-export function FeaturedBoomsweeper() {
-  return (
-    <section className="px-4 pt-14 sm:px-6" aria-labelledby="shipping">
-      <div className="mx-auto max-w-5xl">
-        <div className="mb-6 flex items-baseline gap-4">
-          <h2 id="shipping" className="silkscreen text-[0.8125rem] text-bright">
-            Now shipping
-          </h2>
-          <span className="h-px flex-1 bg-line" aria-hidden="true" />
-          <span className="silkscreen flex items-center gap-1.5 text-status">
-            <span className="size-1.5 rounded-full bg-status" aria-hidden="true" />
-            Live on Google Play
-          </span>
-        </div>
-
-        <div className="grid gap-px border border-line bg-line md:grid-cols-[1.1fr_1fr]">
-          <div className="flex flex-col gap-5 bg-panel p-6">
-            <div className="flex items-center gap-4">
-              <img
-                src={boomsweeper.icon}
-                alt=""
-                width={72}
-                height={72}
-                className="size-[72px] rounded-[22%] shadow-lg"
-              />
-              <div>
-                <h3 className="text-2xl leading-tight font-bold">{boomsweeper.name}</h3>
-                <p className="silkscreen mt-2 text-caution">
-                  {boomsweeper.tagline} · by {studio.name}
-                </p>
-              </div>
-            </div>
-            <p className="max-w-[48ch] text-[0.95rem] leading-relaxed text-body">
-              {boomsweeper.pitch}
-            </p>
-            <Facts />
-            <div className="flex flex-wrap gap-3">
-              <PlayButton />
-              <Link
-                to="/projects/boomsweeper"
-                className="inline-flex items-center border border-line px-4 py-3 silkscreen
-                           text-cyan hover:border-cyan"
-              >
-                How it was built →
-              </Link>
-            </div>
-          </div>
-
-          <div className="relative flex items-end justify-center gap-3 overflow-hidden bg-screen scanlines px-4 pt-8">
-            {boomsweeper.features.slice(0, 3).map((f, i) => (
-              <Phone
-                key={f.name}
-                src={f.image}
-                alt={`Boomsweeper screenshot: ${f.name}`}
-                className={`w-[31%] max-w-[170px] ${i === 1 ? 'mb-6' : '-mb-6'}`}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-/** The studio as one compact row: logo, one paragraph, a link. */
-export function StudioPanel() {
-  return (
-    <section className="px-4 pt-px sm:px-6" aria-label={studio.name}>
-      <div className="mx-auto max-w-5xl">
-        <div className="grid items-center gap-5 border border-t-0 border-line bg-[#1c1840] p-6 sm:grid-cols-[auto_1fr_auto]">
-          <img src={`${import.meta.env.BASE_URL}showcase/lockup-cream.svg`} alt={studio.name} className="h-14 w-auto" />
-          <p className="max-w-[56ch] text-[0.875rem] leading-relaxed text-[#f4ead3]/80">
-            <span className="silkscreen mr-2 text-[#ffc62e]">{studio.role}</span>
-            {studio.blurb}
-          </p>
-          <a
-            href={studio.url}
-            target="_blank"
-            rel="noreferrer"
-            className="silkscreen border border-[#f4ead3]/30 px-4 py-3 text-[#f4ead3] hover:border-[#ffc62e] hover:text-[#ffc62e]"
-          >
-            {studio.urlLabel} →
-          </a>
-        </div>
-      </div>
-    </section>
   )
 }
 
@@ -192,7 +89,7 @@ export function Trailer({ className = '' }: { className?: string }) {
 }
 
 /**
- * Proposal B: a full showcase section — trailer, the four things the game
+ * The featured game: a full showcase section — trailer, the four things the game
  * does, and how it is built — that reads like a small press kit.
  */
 export function BoomsweeperShowcase() {
